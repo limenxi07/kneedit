@@ -1,0 +1,19 @@
+{
+  "$comment": "Review status of every Simplified Chinese string. All of them are machine-drafted until a native speaker signs them off. Priority: safety first, then health, then general. Keys are namespace:key.path. tests/i18n.test.ts fails if a zh key is missing here or an entry is stale.",
+  "strings": {
+    "common:app.name": { "status": "machine-drafted", "priority": "general" },
+    "common:app.tagline": { "status": "machine-drafted", "priority": "general" },
+    "common:language.label": { "status": "machine-drafted", "priority": "general" },
+    "common:language.en": { "status": "machine-drafted", "priority": "general" },
+    "common:language.zh-Hans": { "status": "machine-drafted", "priority": "general" },
+    "common:placeholder.title": { "status": "machine-drafted", "priority": "general" },
+    "common:placeholder.body": { "status": "machine-drafted", "priority": "general" },
+    "common:placeholder.rolesTitle": { "status": "machine-drafted", "priority": "general" },
+    "common:placeholder.senior": { "status": "machine-drafted", "priority": "health" },
+    "common:placeholder.caregiver": { "status": "machine-drafted", "priority": "general" },
+    "common:placeholder.physio": { "status": "machine-drafted", "priority": "health" },
+    "common:safety.stopIfPain": { "status": "machine-drafted", "priority": "safety" },
+    "common:notFound.title": { "status": "machine-drafted", "priority": "general" },
+    "common:notFound.back": { "status": "machine-drafted", "priority": "general" }
+  }
+}
