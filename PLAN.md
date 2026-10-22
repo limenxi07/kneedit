@@ -26,7 +26,7 @@ Approved on 22 Oct 2026, with two revisions: Plus features are unlocked and labe
 
 ## Architecture
 
-**Stack.** Expo SDK 58 (latest stable, 58.0.17), Expo Router, TypeScript `strict` plus `noUncheckedIndexedAccess`, and NativeWind 4.2 (Tailwind 3.4). The rest:
+**Stack.** Expo SDK 57 (57.0.31, React Native 0.86), Expo Router, TypeScript `strict` plus `noUncheckedIndexedAccess`, and NativeWind 4.2 (Tailwind 3.4). The rest:
 
 - Data: `@supabase/supabase-js` and TanStack Query.
 - i18n: `i18next`, `react-i18next` and `expo-localization`.
@@ -307,7 +307,7 @@ interface ExerciseTracker {
 
 ## Build phases (one PR each; branch `phase-N-<name>`)
 
-1. **Setup:** Expo SDK 58 and Router, TS strict, NativeWind and tokens, ESLint (flat `eslint-config-expo`) and Prettier, the i18n layer in both languages, fonts including Noto Sans SC, the base UI kit, and a placeholder screen with a language switch.
+1. **Setup:** Expo SDK 57 and Router, TS strict, NativeWind and tokens, ESLint (flat `eslint-config-expo`) and Prettier, the i18n layer in both languages, fonts including Noto Sans SC, the base UI kit, and a placeholder screen with a language switch.
    - Also: `AGENTS.md`, `CLAUDE.md` (pointing to `@AGENTS.md`), `.env.example`, `.gitignore`, `PLAN.md`.
    - CI: `.github/workflows/ci.yml` runs lint, typecheck and test.
    - Vercel: `vercel.json`.
@@ -371,7 +371,8 @@ Where a question wasn't answered, the recommendation stands.
 | 15 | Native builds | Expo Go and magic link through Phase 6; EAS dev build in Phase 7. |
 | 16 | Edge Functions and the service role | Fine: Supabase injects the key server-side; it is never in the repo or the app. |
 | 17 | Demo videos in the public repo | Yes, commit the three videos and posters. |
-| 18 | Vercel | I link the Vercel project and connect the GitHub repo, so each PR gets a preview deploy. |
+| 18 | Vercel | I link the Vercel project and connect the GitHub repo, so each PR gets a preview deploy. Done: production is https://kneedit.vercel.app, deployed from `main`. |
+| 19 | Expo SDK version | Pinned to **SDK 57** instead of the latest stable 58, so the App Store's Expo Go works on everyone's iPhone. Upgrade to 58 once Expo Go in the App Store supports it (see Risks). |
 
 ## Assumptions (unless you object)
 
@@ -385,6 +386,6 @@ Where a question wasn't answered, the recommendation stands.
 
 ## Risks I'll watch
 
-- **NativeWind 4 on SDK 58.** If it doesn't work, I'll ask before choosing between NativeWind 5 (still an RC) and pinning SDK 57.
+- **Expo SDK version.** We're on SDK 57, not the latest stable SDK 58, because the App Store's Expo Go only runs projects up to SDK 57 (decision 19). Upgrade to SDK 58 once Expo Go in the App Store supports it: `npx expo install expo@~58.0.0`, then `npx expo install --fix`, then `npx expo-doctor`. NativeWind 4 is confirmed working on both 57 and 58.
 - **App size.** Two weights of Noto Sans SC add roughly 15 to 20 MB to the native app. On web, the font loads from Google Fonts in subsets.
 - **Edge Function imports.** Edge Functions need to import `lib/progress` and `locales` from outside `supabase/functions`. If the Supabase bundler refuses, a sync script copies them into `_shared/`, with a test that fails if the copies drift.

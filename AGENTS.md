@@ -18,7 +18,7 @@ A companion app for a smart knee sleeve. It helps seniors with knee osteoarthrit
 
 ## Stack
 
-- One **Expo** app (SDK 58) with **Expo Router**, **TypeScript strict** and **NativeWind 4** (Tailwind 3). iOS and Android for seniors and caregivers; the web build of the same app is the physio dashboard, deployed to Vercel.
+- One **Expo** app (SDK 57, so the App Store's Expo Go can run it; we move to 58 once Expo Go supports it) with **Expo Router**, **TypeScript strict** and **NativeWind 4** (Tailwind 3). iOS and Android for seniors and caregivers; the web build of the same app is the physio dashboard, deployed to Vercel.
 - **Supabase** for Postgres, auth and storage. Migrations go through the Supabase CLI (`npx supabase`, a devDependency). Edge Functions handle scheduled jobs and push.
 - **Expo Notifications** for local reminders and server push.
 - **i18next** with `react-i18next` and `expo-localization` for English and Simplified Chinese.
@@ -39,7 +39,7 @@ npm run build:web       # static web export to dist/ (what Vercel runs)
 ```
 
 - Add packages with `npx expo install <pkg>`, never a bare `npm install <pkg>`, so versions match the SDK.
-- Expo changes every SDK. Before using an Expo or React Native API, read the docs for SDK 58 (`https://docs.expo.dev/versions/v58.0.0/`) or the index at `https://docs.expo.dev/llms.txt`, rather than relying on memory.
+- Expo changes every SDK. Before using an Expo or React Native API, read the docs for SDK 57 (`https://docs.expo.dev/versions/v57.0.0/`) or the index at `https://docs.expo.dev/llms.txt`, rather than relying on memory.
 - `ios/` and `android/` are generated (Continuous Native Generation) and gitignored. Configure native behaviour in `app.json` and config plugins only.
 - Expo Go only has its bundled native modules. Anything else needs a development build (EAS).
 
