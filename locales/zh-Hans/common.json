@@ -1,0 +1,26 @@
+{
+  "app": {
+    "name": "Kneedit",
+    "tagline": "在家坚持做膝盖运动"
+  },
+  "language": {
+    "label": "语言",
+    "en": "English",
+    "zh-Hans": "中文"
+  },
+  "placeholder": {
+    "title": "欢迎使用 Kneedit",
+    "body": "这是 Kneedit 应用的第一个版本。登录、今日运动、家人报告和物理治疗师面板将在后续阶段推出。",
+    "rolesTitle": "Kneedit 为谁而设",
+    "senior": "您完成物理治疗师为您安排的运动。",
+    "caregiver": "您的家人知道运动已经完成。",
+    "physio": "您的物理治疗师了解两次就诊之间的情况。"
+  },
+  "safety": {
+    "stopIfPain": "如果疼痛加剧，请停止运动并联系您的医护人员。"
+  },
+  "notFound": {
+    "title": "此页面不存在",
+    "back": "返回主页"
+  }
+}

@@ -1,0 +1,9 @@
+node_modules
+dist
+.expo
+coverage
+package-lock.json
+supabase/.temp
+supabase/.branches
+# Docs are formatted by hand.
+*.md
