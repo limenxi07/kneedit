@@ -4,7 +4,7 @@
 
 `limenxi07/kneedit` is empty. The brief asks for the first working prototype of Kneedit: one Expo app (iOS, Android, web) with three users. Seniors do their prescribed knee exercises, caregivers see that the exercises got done, and physios use a desktop web dashboard. Supabase is the backend, sharing is enforced in Postgres RLS, and English and Simplified Chinese ship from day one. There is no sleeve hardware yet, so workouts are logged manually and demo accounts get clearly labelled fake data.
 
-Approved on 22 Oct 2026, with two revisions: Plus features are unlocked and labelled with a badge while payments aren't live, and every role can delete their account. The questions at the end are still open; answers will be recorded here as they come in.
+Approved on 22 Oct 2026, with two revisions: Plus features are unlocked and labelled with a badge while payments aren't live, and every role can delete their account. The open questions were answered the same day; the outcomes are under Decisions, and the sections below already reflect them.
 
 ### What I read
 
@@ -21,7 +21,7 @@ Approved on 22 Oct 2026, with two revisions: Plus features are unlocked and labe
 | "No sleeve, no session" in the leaderboard rules | Removed | Manual logging |
 | Secondary text at `text-ink/50` and `/55`; scores in muted blue | Every text is solid ink. Muted blue and mauve are only used for bars, rings and borders. | Brief 8 contrast rule (ink on muted blue is about 4.1:1, which fails AA) |
 | Mocked counts (`PAST_DAYS`, `EARLIER_HURT`, and so on) | Computed from stored records | |
-| `SESSIONS_PER_WEEK = 7`, fixed | Prescribed slots computed from each senior's programme (see Q3) | Brief 7 frequencies |
+| `SESSIONS_PER_WEEK = 7`, fixed | Prescribed slots computed from each senior's programme (Q3) | Brief 7 frequencies |
 | PROJECT.md says "prevents" and "clinical-grade" | Not used anywhere | #1, brief 1 |
 
 ## Architecture
@@ -90,8 +90,8 @@ assets/fonts/, assets/exercise-media/
 ## Progress rules (`lib/progress`)
 
 - **Day:** an Asia/Singapore calendar date. **Week:** Monday to Sunday.
-- **Prescribed slots in a day:** worked out from the programme in force that day. A day has 0 slots (rest day), 1, or 2 if a twice-daily exercise is due (see Q3). Alternate days count from the prescription's start date.
-- **Counted sessions:** a day's complete sessions are ordered by end time. The first N fill that day's N slots. Extra sessions are saved and shown but never counted (#11). Incomplete sessions never count.
+- **Prescribed sessions in a day:** set by the physio's plan in force that day (Q3). A day has 0 (rest day), 1, or 2 if a twice-daily exercise is due. Alternate days count from the prescription's start date. The second session of a day queues only the twice-daily exercises.
+- **Counted sessions:** a day's complete sessions are ordered by end time, and they count up to the number the plan prescribes for that day (Q3 amends #11: the cap comes from the plan, not a fixed one a day). Sessions beyond that are saved and shown but never counted. Incomplete sessions never count.
 - **Completion rate:** counted sessions divided by the prescribed slots for the whole Monday-to-Sunday week, as a whole percentage. On a Wednesday the most you can have is 3 of 7, which is 43%, matching the demo.
 - **Missed day:** a past day with fewer counted sessions than prescribed slots. Today never counts as missed.
 - **Streak:** consecutive prescribed days with at least one counted session, counting back from yesterday, plus today once today has one. Rest days are skipped.
@@ -122,7 +122,7 @@ assets/fonts/, assets/exercise-media/
 | --- | --- | --- |
 | `app_settings` | paywall_enabled (default false) | A single row. Anyone signed in can read it; only a migration or the service role can write it. |
 | `profiles` | id = auth user id, display_name, locale (`en` or `zh-Hans`), timezone (default Asia/Singapore), is_demo, default_context | One row per account. Only the service role can set `is_demo`. |
-| `seniors` | profile_id, birth_year, gender, plan, reminder_time (default 09:00), share_weekly_report, share_fall_alerts, show_on_leaderboard, friend_code | Present when the account does the exercises. Clients can't update `plan` directly. |
+| `seniors` | profile_id, birth_year, gender, plan, reminder_time (default 09:00), share_weekly_report, share_fall_alerts, show_on_leaderboard, friend_code | Present when the account does the exercises. The three sharing settings default to on (Q4). Clients can't update `plan` directly. |
 | `senior_link_codes` | senior_id, code (6 characters, no 0/O/1/I), created_at | Only the senior can read it. Members redeem it through an RPC. |
 | `senior_clinical` | senior_id, affected_knee, notes, updated_by | Filled in by the physio (Q7) |
 | `care_links` | senior_id, member_id, role, status, requested_at, responded_at, revoked_at, revoked_by | Unique while not revoked. No self-links. At most one active physio (Q8). |
@@ -160,7 +160,7 @@ assets/fonts/, assets/exercise-media/
 - They also reject any care link or friendship between a demo account and a real one, so a real user can never see fake data.
 - Every derived record carries `includes_sample_data`, which turns on the "Sample data" tag.
 
-**Who can see what** (enforced in RLS and RPCs; "(Q)" marks my recommended answer to an open question). While the paywall is off, which is the default, the Free columns behave like the Plus columns. The split shows what gets the Plus badge, and what the gating does once the paywall is switched on.
+**Who can see what** (enforced in RLS and RPCs; "(Qn)" points to the decision behind a cell). While the paywall is off, which is the default, the Free columns behave like the Plus columns. The split shows what gets the Plus badge, and what the gating does once the paywall is switched on.
 
 | Data | Senior | Caregiver, Free | Caregiver, Plus | Physio, Free | Physio, Plus | Friend |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -174,11 +174,11 @@ assets/fonts/, assets/exercise-media/
 | Weekly reports | yes | no | if report on | no | yes | no |
 | Caregiver notes | read (Q5) | no | write and read | no | read | no |
 | Programme | read | read | read | read and write | read and write | no |
-| Visit bookings | read | read (Q9) | read | read and write | read and write | no |
+| Visit bookings | read | no (Q9) | read | read and write | read and write | no |
 | Visit summaries | read (Q5) | no | no | adherence part | full | no |
 | Clinical details | read | no | no | read and write | read and write | no |
 | Alerts | yes | no | yes | no | no | no |
-| Nudges | read | send (Q9) | send | no | no | no |
+| Nudges | read | no (Q9) | send | no | no | no |
 
 Pending and revoked links see nothing, and revoking takes effect at once.
 
@@ -190,7 +190,7 @@ Pending and revoked links see nothing, and revoking takes effect at once.
   - notes about them, visits and prescriptions;
   - links, friendships and codes.
   Their caregivers and physio lose access at once.
-- **Deleting a caregiver or physio** removes their profile, links and push tokens, and what happens to anything they wrote depends on Q10.
+- **Deleting a caregiver or physio** removes their profile, links and push tokens. What they wrote about a senior stays on the senior's record (Q10): caregiver notes are credited to "Former caregiver", and prescriptions, visits and visit summaries to "Former physiotherapist". The author columns are `on delete set null`.
 - It runs inside one transaction, and pgTAP tests check that it removes exactly the right rows and leaves other users' data alone.
 
 ## SleeveSource (`lib/sleeve`)
@@ -266,9 +266,9 @@ interface ExerciseTracker {
   - Free: streak and sessions this month
   - Plus: weekly report, which is the Monday-to-Sunday grid, sessions done of prescribed, %, average daily steps, and flagged events. If the senior has turned the report off, the screen says so.
   - Plus: notes for the physio
-  - **Send a gentle nudge**
+  - Plus: **Send a gentle nudge**
 - Alerts list (Plus), with a dev-only **Simulate possible fall** button on demo accounts
-- Visits calendar with a .ics download
+- Visits calendar with a .ics download (Plus)
 - Plus info / mock checkout labelled "Prototype, no payment taken". It only changes the plan when the paywall flag is on.
 - Account, including Delete account
 
@@ -348,47 +348,30 @@ After each phase: lint, typecheck and tests (plus db tests from Phase 2) must pa
 - Native, on your phone: `npx expo start`, then Expo Go. The PR notes say what to tap through.
 - Demo: `npm run db:start && npm run seed:demo`, then sign in as the demo senior, caregiver or physio. Locally the magic links arrive in Mailpit at `localhost:54324`.
 
-## Questions
+## Decisions (answered 22 Oct 2026)
 
-Reply "go with the recommendations" or override any of them by number. Only Q1 and Q2 block Phase 1.
+Where a question wasn't answered, the recommendation stands.
 
-**Before Phase 1**
-
-1. **No `main` branch exists yet** (the repo is empty), so there is nothing to open a PR against. *Recommended:* I push one empty "Initial commit" to `main` once, then you turn on branch protection. Alternatively, you create it yourself.
-2. **Waiting between phases.** *Recommended:* I stop after each PR and wait for you to say continue. You don't have to merge first; I branch the next phase off the previous one and retarget it after your merge.
-
-**Before Phase 2** (these shape the schema and RLS)
-
-3. **Twice daily and alternate days against "only the first complete session per day counts" (#11).** *Recommended:*
-   - A day has 1 slot, 2 if any twice-daily exercise is due, or 0 on a rest day.
-   - The second session of a day holds only the twice-daily exercises and counts for slot 2. Anything after that is extra and never counted.
-   - The streak needs one counted session on each prescribed day, and rest days don't break it.
-   - The week % counts every slot.
-4. **Default sharing on real accounts.** *Recommended:* weekly report and fall notifications start **off**. The senior is asked to choose both when approving their first caregiver. "Show me on friends' leaderboards" starts **on**, since friending is already mutual. Demo accounts have everything on.
-5. **Can the senior read caregiver notes about them, and their visit summaries?** *Recommended:* yes to both, read-only. Caregivers of the same senior also see each other's notes.
-6. **Does the physio's Plus "full record" include steps and possible falls?** *Recommended:* yes. The fall toggle covers caregiver alerts only.
-7. **What are the "clinical details"?** *Recommended for the MVP:* affected knee (left, right or both) and free-text notes. Only the senior and their physio see them; caregivers don't.
-8. **More than one physio per senior?** *Recommended:* one active physio link at a time. Approving a second asks the senior to end the first.
-9. **Visit bookings and nudges for caregivers: Free or Plus?** Everything is unlocked for now, so this only decides which ones get the Plus badge. *Recommended:* Free, so no badge. They are logistics, not health data, and neither is on the Plus list (#16, Q1 of the decisions log).
-10. **When a caregiver or physio deletes their account, what happens to what they wrote about a senior?** *Recommended:*
-    - Caregiver notes are deleted along with their author.
-    - A physio's prescriptions, visits and visit summaries stay on the senior's record, credited to "Former physiotherapist". That way the senior's programme doesn't vanish halfway through a week.
-    - The senior is told in the app that the link has ended.
-    - Deletion is immediate, with no grace period.
-
-**Before Phase 4** (health and safety copy)
-
-11. **"Default clinician-reviewed routine" (#17) against "Draft, pending clinician sign-off".** Calling it clinician-reviewed before sign-off would be an untrue claim. *Recommended:* call it the "Kneedit starter routine" until sign-off, and show the draft label in the physio library and in the senior's Profile programme.
-12. **"diagnose" is a banned word, but the demo's disclaimer says "It does not diagnose".** *Recommended:* reword to "Kneedit is not a medical device. It does not give medical advice or replace professional care." That lets the copy test stay strict.
-
-**Accounts and infrastructure**
-
-13. **Hosted Supabase.** Local Supabase (which needs Docker or OrbStack running; it isn't right now) is enough through Phase 6. Phones and Vercel need a hosted project. *Recommended:* you create it before Phase 3 and put its URL and anon key in `.env` yourself.
-14. **Demo login emails on hosted Supabase.** Magic links can't reach made-up addresses. *Recommended:* the seed script reads the demo emails from `.env.seed.local`, for example plus-addresses on an inbox you control. Locally they default to `*@kneedit.test`, and Mailpit catches them.
-15. **Native builds.** This Mac has no Xcode and no Android SDK. Expo Go covers most things. Push on Android, a proper `kneedit://` scheme and native Google sign-in need an EAS development build, which needs an Expo account and Google OAuth client IDs. *Recommended:* Expo Go and magic link through Phase 6, with an EAS dev build in Phase 7.
-16. **Edge Functions run with the service role key that Supabase injects.** The key is never in the repo or the app. Does that fit your "seed scripts only" rule?
-17. **The repo is public.** Is it OK to commit the three demo videos and posters (4.7 MB, presumably the team's own)? The seed script uploads them to Storage. The two standing exercises get a "Video coming soon" placeholder.
-18. **Vercel.** *Recommended:* I add the config, and you connect the repo in the Vercel dashboard so each PR gets a preview deploy.
+| # | Question | Decision |
+| --- | --- | --- |
+| 1 | Base branch | I pushed one empty "Initial commit" to `main`. You turn on branch protection. |
+| 2 | Waiting between phases | I stop after each PR and wait for you to say continue. The next phase branches off the previous one if it isn't merged yet. |
+| 3 | Twice daily and alternate days against #11 | Sessions count up to the number the physio's plan prescribes for the day, not strictly one a day. A day has 0, 1 or 2 prescribed sessions, the second holding only the twice-daily exercises. The streak needs one counted session on each prescribed day; rest days don't break it. The week % counts every prescribed session. |
+| 4 | Default sharing | All three settings (weekly report, fall notifications, leaderboard) start **on** for every account. The senior can turn any of them off in Profile. |
+| 5 | Senior reads caregiver notes and visit summaries | Yes, read-only. Caregivers of the same senior also see each other's notes. |
+| 6 | Physio Plus record includes steps and possible falls | Yes. The fall toggle covers caregiver alerts only. |
+| 7 | Clinical details | Affected knee (left, right or both) and free-text notes. Senior and physio only. |
+| 8 | Physios per senior | One active physio link at a time. |
+| 9 | Caregiver visit bookings and nudges | **Plus.** Both get the Plus badge; while the paywall is off, they work for everyone. |
+| 10 | What a deleted caregiver or physio wrote | **Kept** on the senior's record, credited to "Former caregiver" or "Former physiotherapist". The senior is told the link ended. Deletion is immediate. |
+| 11 | "Clinician-reviewed" default routine | Called the "Kneedit starter routine" until sign-off, with the draft label in the physio library and the senior's Profile programme. |
+| 12 | Disclaimer wording | "Kneedit is not a medical device. It does not give medical advice or replace professional care." |
+| 13 | Hosted Supabase | You create it before Phase 3 and put its URL and anon key in `.env`. |
+| 14 | Demo login emails | Read from `.env.seed.local`; locally `*@kneedit.test`, caught by Mailpit. |
+| 15 | Native builds | Expo Go and magic link through Phase 6; EAS dev build in Phase 7. |
+| 16 | Edge Functions and the service role | Fine: Supabase injects the key server-side; it is never in the repo or the app. |
+| 17 | Demo videos in the public repo | Yes, commit the three videos and posters. |
+| 18 | Vercel | I link the Vercel project and connect the GitHub repo, so each PR gets a preview deploy. |
 
 ## Assumptions (unless you object)
 
