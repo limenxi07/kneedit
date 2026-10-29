@@ -14,7 +14,7 @@ const keys = {
 };
 
 /** Display names for a set of profiles the caller may see (RLS decides). */
-async function namesFor(ids: string[]): Promise<Map<string, string>> {
+export async function namesFor(ids: string[]): Promise<Map<string, string>> {
   if (ids.length === 0) return new Map();
   const { data, error } = await supabase.from('profiles').select('id, display_name').in('id', ids);
   if (error) throw error;

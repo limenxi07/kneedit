@@ -28,3 +28,9 @@ export function formatPercent(rate: number, language: Language): string {
     maximumFractionDigits: 0,
   }).format(rate / 100);
 }
+
+/** A wall-clock time in Singapore, from "HH:MM" or "HH:MM:SS", shown in the user's language. */
+export function formatTimeOfDay(value: string, language: Language): string {
+  // Any date works: build the instant at that Singapore time, then show it in Singapore time.
+  return formatTime(new Date(`2026-01-01T${value.slice(0, 5)}:00+08:00`), language);
+}

@@ -12,17 +12,20 @@ import { PlusBadge } from '@/components/ui/PlusBadge';
 import { Screen } from '@/components/ui/Screen';
 import { Text } from '@/components/ui/Text';
 import { Toggle } from '@/components/ui/Toggle';
+import { formatTimeOfDay } from '@/lib/i18n/format';
+import { useLanguage } from '@/lib/i18n/useLanguage';
 import { useUpdateSharing } from '@/lib/queries/account';
 import { useMyCareTeam } from '@/lib/queries/links';
 import { useMe } from '@/lib/queries/me';
 import { errorKey } from '@/lib/supabase/errors';
 
 /**
- * Profile: sharing, linked people, friends, language, and the account.
- * Programme, reminder time and visits join it in Phase 4.
+ * Profile: sharing, linked people and friends, the programme, reminder and
+ * visits, language, and the account.
  */
 export default function Profile() {
   const { t } = useTranslation(['senior', 'common']);
+  const { language } = useLanguage();
   const { data: me } = useMe();
   const { data: team } = useMyCareTeam();
   const sharing = useUpdateSharing();
@@ -77,6 +80,28 @@ export default function Profile() {
           variant="secondary"
           fullWidth
           onPress={() => router.navigate('/friends')}
+        />
+      </Card>
+
+      <Card>
+        <Text variant="subheading">{t('profile.exercisesTitle')}</Text>
+        {senior ? (
+          <Text>
+            {t('profile.reminderAt', { time: formatTimeOfDay(senior.reminder_time, language) })}
+          </Text>
+        ) : null}
+        <Button label={t('profile.programme')} onPress={() => router.push('/my-programme')} />
+        <Button
+          label={t('profile.reminder')}
+          variant="secondary"
+          fullWidth
+          onPress={() => router.push('/reminder')}
+        />
+        <Button
+          label={t('profile.visits')}
+          variant="secondary"
+          fullWidth
+          onPress={() => router.push('/my-visits')}
         />
       </Card>
 

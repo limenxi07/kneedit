@@ -40,6 +40,9 @@ npm run db:start        # local Supabase in Docker (migrations and supabase/seed
 npm run db:test         # pgTAP tests: run before every PR that touches supabase/
 npm run db:types        # regenerate lib/supabase/database.types.ts after a migration
 npm run seed:demo       # wipe and recreate the demo accounts and their fake data
+npm run functions:check # call the Edge Functions on local Supabase as a real user (CI runs it)
+npm run functions:deploy  # deploy supabase/functions to the hosted project
+npm run media:upload    # upload assets/exercise-media to the exercise-media bucket
 ```
 
 - Add packages with `npx expo install <pkg>`, never a bare `npm install <pkg>`, so versions match the SDK.
@@ -76,6 +79,7 @@ types/                   global type declarations
 - Guard screens with `components/shared/Guards` (`RequireSignedIn`, `RequireRole`). Guards only decide navigation; RLS decides what anyone can read.
 - Import with the `@/` alias (`@/components/ui/Text`, `@/lib/i18n`).
 - Except in `lib/progress`, `lib/sleeve` and `fake-data`, which are plain TypeScript that also runs in Node (seed script) and Deno (Edge Functions): relative imports with the `.ts` extension, `import type` for types, no `@/` alias, no enums, no dependencies.
+- Edge Functions in `supabase/functions/<name>/index.ts` import `lib/progress` by relative path (`../../../lib/progress/index.ts`), so the rules have one implementation. TypeScript and ESLint skip `supabase/functions` (Deno code); `npm run functions:check` exercises them end to end.
 
 ## Naming
 

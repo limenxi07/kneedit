@@ -32,6 +32,7 @@ npm run db:start       # Postgres, auth and storage; applies migrations and supa
 npm run db:test        # pgTAP tests in supabase/tests/database
 npm run seed:demo      # wipe and recreate the demo accounts with FAKE data
 npm run db:types       # regenerate lib/supabase/database.types.ts after a migration
+npm run functions:check  # call the Edge Functions as a throwaway user (CI runs it too)
 npm run db:reset       # rebuild the local database from the migrations
 npm run db:stop
 ```
@@ -60,6 +61,22 @@ For the hosted project, in the Supabase dashboard:
 - **Google** (optional): enable the Google provider with an OAuth client. Locally it is off; `supabase/config.toml` explains how to turn it on.
 
 Vercel needs `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY` in its environment variables, or the app throws at start-up (the browser console says which variable is missing).
+
+## Edge Functions and media
+
+`supabase/functions/recompute-stats` recomputes a senior's streak, week and month with `lib/progress`. The app calls it after every session and when Today opens on a new day. Locally, `npm run db:start` serves it. For the hosted project:
+
+```bash
+npx supabase login
+npx supabase link --project-ref <your-project-ref>
+npm run functions:deploy
+```
+
+Exercise videos and posters go in `assets/exercise-media/` (see the README there), then `npm run media:upload` copies them to the public `exercise-media` bucket, locally or, with `.env.seed.local`, to the hosted project. Without them the exercise screen says the video isn't available and shows the steps.
+
+## Reminders
+
+Seniors get a daily reminder as a local notification on their phone, at the time they chose (Profile, Daily reminder). Nothing is sent from a server. The web build has no reminders. It works in Expo Go; push notifications from the server arrive with the development build in Phase 7.
 
 ## Chinese strings awaiting review
 

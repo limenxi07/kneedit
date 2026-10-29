@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Platform, Share, View } from 'react-native';
 
 import { FriendRow } from '@/components/senior/FriendRow';
+import { Leaderboard } from '@/components/senior/Leaderboard';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Loading } from '@/components/ui/Loading';
@@ -20,8 +21,8 @@ import { useMe } from '@/lib/queries/me';
 import { errorKey } from '@/lib/supabase/errors';
 
 /**
- * Friends: add by code, share my code, answer requests, remove a friend.
- * The weekly leaderboard joins this screen with the session flow (Phase 4).
+ * Friends: this week's leaderboard, requests to answer, friends (with
+ * Remove), add by code and share my code.
  */
 export default function Friends() {
   const { t } = useTranslation(['senior', 'common']);
@@ -58,6 +59,8 @@ export default function Friends() {
     <Screen>
       <Text variant="title">{t('friends.title')}</Text>
       <Text>{t('friends.intro')}</Text>
+
+      <Leaderboard />
 
       {friendships.isPending ? <Loading /> : null}
       {friendships.error ? (
