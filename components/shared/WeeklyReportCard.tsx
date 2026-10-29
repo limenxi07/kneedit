@@ -24,7 +24,7 @@ const DAY_TONE: Record<DayStatus, string> = {
  * not only colour.
  */
 export function WeeklyReportCard({ title, report }: { title: string; report: WeeklyReport }) {
-  const { t } = useTranslation('caregiver');
+  const { t } = useTranslation();
   const { language } = useLanguage();
   const n = (value: number) => formatNumber(value, language);
   const { flags } = report;
@@ -58,7 +58,7 @@ export function WeeklyReportCard({ title, report }: { title: string; report: Wee
               accessible
               accessibilityLabel={t('report.dayLabel', { day, status })}
               className={cn(
-                'min-w-[72px] grow items-center gap-1 rounded-2xl border-2 px-2 py-2',
+                'min-w-[60px] grow basis-0 items-center gap-1 rounded-2xl border-2 px-1 py-2',
                 DAY_TONE[d.status],
               )}
             >

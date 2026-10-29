@@ -8,7 +8,7 @@ import { Notice } from '@/components/ui/Notice';
 import { Screen } from '@/components/ui/Screen';
 import { Text } from '@/components/ui/Text';
 import { useUserId } from '@/lib/auth/useAuth';
-import { formatDate, formatNumber } from '@/lib/i18n/format';
+import { formatDate, formatNumber, formatWeekday } from '@/lib/i18n/format';
 import { localized } from '@/lib/i18n/localized';
 import { useLanguage } from '@/lib/i18n/useLanguage';
 import { localDate, planOn, type Plan, type PlanItem } from '@/lib/progress';
@@ -16,11 +16,6 @@ import { useExercises, useProgramme, type Exercise } from '@/lib/queries/program
 import { errorKey } from '@/lib/supabase/errors';
 
 const WEEKDAYS = [1, 2, 3, 4, 5, 6, 7] as const;
-
-/** The name of an ISO weekday (1 is Monday) in the user's language. 5 January 2026 is a Monday. */
-function weekdayName(day: number, language: 'en' | 'zh-Hans') {
-  return formatDate(new Date(`2026-01-0${4 + day}T12:00:00+08:00`), language, { weekday: 'long' });
-}
 
 /** The senior's programme, read-only: what the physio set, or the Kneedit starter routine. */
 export default function MyProgramme() {
@@ -106,7 +101,7 @@ function PlanCard({
           const items = plan.items.filter((i) => i.weekday === day);
           return (
             <View key={day} className="gap-2">
-              <Text variant="bodyStrong">{weekdayName(day, language)}</Text>
+              <Text variant="bodyStrong">{formatWeekday(day, language)}</Text>
               {items.length === 0 ? <Text>{t('programme.rest')}</Text> : null}
               <Items items={items} exercises={exercises} />
             </View>
