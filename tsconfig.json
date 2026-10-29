@@ -6,6 +6,7 @@
     "noImplicitOverride": true,
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
     "paths": {
       "@/*": ["./*"]
     },

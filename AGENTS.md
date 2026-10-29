@@ -36,6 +36,10 @@ npm run typecheck       # tsc --noEmit
 npm test                # Jest
 npm run check           # lint, typecheck and test: run before every PR
 npm run build:web       # static web export to dist/ (what Vercel runs)
+npm run db:start        # local Supabase in Docker (migrations and supabase/seed.sql applied)
+npm run db:test         # pgTAP tests: run before every PR that touches supabase/
+npm run db:types        # regenerate lib/supabase/database.types.ts after a migration
+npm run seed:demo       # wipe and recreate the demo accounts and their fake data
 ```
 
 - Add packages with `npx expo install <pkg>`, never a bare `npm install <pkg>`, so versions match the SDK.
@@ -68,6 +72,7 @@ types/                   global type declarations
 
 - Never put non-route code inside `app/`.
 - Import with the `@/` alias (`@/components/ui/Text`, `@/lib/i18n`).
+- Except in `lib/progress`, `lib/sleeve` and `fake-data`, which are plain TypeScript that also runs in Node (seed script) and Deno (Edge Functions): relative imports with the `.ts` extension, `import type` for types, no `@/` alias, no enums, no dependencies.
 
 ## Naming
 
@@ -119,7 +124,9 @@ types/                   global type declarations
 - Every stored record has `source: 'fake' | 'manual' | 'sleeve'`. Any screen that shows fake data shows the "Sample data" tag. Reports never silently mix fake and real data.
 - Fake data lives only in `fake-data/` and is only loaded into demo accounts by the seed script. Real accounts start empty.
 - Sleeve access always goes through the `SleeveSource` interface in `lib/sleeve/` (from Phase 2).
-- Sharing is enforced in Postgres RLS, never only by hiding things in the UI. Every policy has a pgTAP test.
+- Sharing is enforced in Postgres RLS, never only by hiding things in the UI. Every policy has a pgTAP test; the visibility matrix lives in `supabase/tests/database/020_visibility.test.sql`.
+- Schema changes are new migrations (`npx supabase migration new <name>`), never edits to merged ones. Then `npm run db:types` and commit the regenerated types; CI fails if they drift.
+- Clients get column-level grants only for what they may write. Anything else (links, friends, prescribing, plan) goes through a `security definer` RPC in `public` with `set search_path = ''` that checks the caller and raises a short key (`invalid_code`, `not_allowed`) the app translates. Helpers and trigger functions go in the `private` schema, which the API doesn't expose.
 - Plus features are gated through the `has_plus()` SQL helper (from Phase 2). While payments are not live, the paywall flag is off, so every Plus feature is unlocked and labelled with a Plus badge.
 
 ## Secrets

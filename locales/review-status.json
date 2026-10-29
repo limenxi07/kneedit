@@ -1,5 +1,5 @@
 {
-  "$comment": "Review status of every Simplified Chinese string. All of them are machine-drafted until a native speaker signs them off. Priority: safety first, then health, then general. Keys are namespace:key.path. tests/i18n.test.ts fails if a zh key is missing here or an entry is stale.",
+  "$comment": "Review status of every Simplified Chinese string. All of them are machine-drafted until a native speaker signs them off. Priority: safety first, then health, then general. Keys are namespace:key.path. tests/i18n.test.ts fails if a zh key is missing here or an entry is stale. \"data\" lists the bilingual data in supabase/seed.sql (tag labels, exercise names and steps), keyed as in scripts/seed-strings.ts.",
   "strings": {
     "common:app.name": { "status": "machine-drafted", "priority": "general" },
     "common:app.tagline": { "status": "machine-drafted", "priority": "general" },
@@ -15,5 +15,38 @@
     "common:safety.stopIfPain": { "status": "machine-drafted", "priority": "safety" },
     "common:notFound.title": { "status": "machine-drafted", "priority": "general" },
     "common:notFound.back": { "status": "machine-drafted", "priority": "general" }
+  },
+  "data": {
+    "tag:strength.label": { "status": "machine-drafted", "priority": "general" },
+    "tag:mobility.label": { "status": "machine-drafted", "priority": "general" },
+    "tag:balance.label": { "status": "machine-drafted", "priority": "general" },
+    "tag:seated.label": { "status": "machine-drafted", "priority": "general" },
+    "tag:lying.label": { "status": "machine-drafted", "priority": "general" },
+    "tag:standing.label": { "status": "machine-drafted", "priority": "general" },
+    "exercise:seated-knee-extension.name": { "status": "machine-drafted", "priority": "health" },
+    "exercise:seated-knee-extension.steps.0": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:seated-knee-extension.steps.1": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:seated-knee-extension.steps.2": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:seated-knee-extension.steps.3": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:ankle-pumps.name": { "status": "machine-drafted", "priority": "health" },
+    "exercise:ankle-pumps.steps.0": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:ankle-pumps.steps.1": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:ankle-pumps.steps.2": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:ankle-pumps.steps.3": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:quad-sets.name": { "status": "machine-drafted", "priority": "health" },
+    "exercise:quad-sets.steps.0": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:quad-sets.steps.1": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:quad-sets.steps.2": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:quad-sets.steps.3": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:heel-raises.name": { "status": "machine-drafted", "priority": "health" },
+    "exercise:heel-raises.steps.0": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:heel-raises.steps.1": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:heel-raises.steps.2": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:heel-raises.steps.3": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:mini-squats.name": { "status": "machine-drafted", "priority": "health" },
+    "exercise:mini-squats.steps.0": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:mini-squats.steps.1": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:mini-squats.steps.2": { "status": "machine-drafted", "priority": "safety" },
+    "exercise:mini-squats.steps.3": { "status": "machine-drafted", "priority": "safety" }
   }
 }
