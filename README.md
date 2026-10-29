@@ -64,7 +64,12 @@ Vercel needs `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY` in i
 
 ## Edge Functions and media
 
-`supabase/functions/recompute-stats` recomputes a senior's streak, week and month with `lib/progress`. The app calls it after every session and when Today opens on a new day. Locally, `npm run db:start` serves it. For the hosted project:
+Two Edge Functions run the progress rules in `lib/progress` on the server:
+
+- `recompute-stats` recomputes a senior's streak, week and month. The app calls it after every session and when Today opens on a new day.
+- `generate-visit-summary` writes a completed visit's summary (adherence, answers, form scores, notes). The physio dashboard calls it when a visit is marked done or recorded.
+
+Shared loading code is in `supabase/functions/_shared/`. Locally, `npm run db:start` serves them. For the hosted project:
 
 ```bash
 npx supabase login

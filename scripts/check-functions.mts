@@ -47,11 +47,13 @@ async function signedInUser(label: string): Promise<SupabaseClient<Database>> {
 }
 
 /** The first call can wait for the function to boot, so retry server errors a few times. */
-async function invoke(client: SupabaseClient<Database>, name: string) {
+async function invoke<T = Record<string, Record<string, unknown>>>(
+  client: SupabaseClient<Database>,
+  name: string,
+  body?: Record<string, unknown>,
+) {
   for (let attempt = 1; ; attempt++) {
-    const result = await client.functions.invoke<{ stats: Record<string, unknown> }>(name, {
-      method: 'POST',
-    });
+    const result = await client.functions.invoke<T>(name, { method: 'POST', body });
     const code = result.error instanceof FunctionsHttpError ? result.error.context.status : 0;
     if (!result.error || (code >= 400 && code < 500) || attempt === 5) return { ...result, code };
     console.log(`${name}: attempt ${attempt} failed (${code || result.error.message}), retrying`);
@@ -83,7 +85,7 @@ try {
   r = await senior.from('sessions').update({ status: 'complete' }).eq('id', session.data!.id);
   assert.equal(r.error, null);
 
-  const result = await invoke(senior, 'recompute-stats');
+  const result = await invoke<{ stats: Record<string, unknown> }>(senior, 'recompute-stats');
   assert.equal(result.error, null, `recompute-stats failed: ${String(result.error)}`);
   const stats = result.data!.stats;
   assert.equal(stats.senior_id, seniorId);
@@ -103,6 +105,54 @@ try {
   const refused = await invoke(member, 'recompute-stats');
   assert.equal(refused.code, 403);
   console.log('recompute-stats: an account without a senior record is refused');
+
+  // The senior's physio records today's visit, as the dashboard does.
+  const physio = await signedInUser('physio');
+  const { data: physioUser } = await physio.auth.getUser();
+  r = await admin.from('care_links').insert({
+    senior_id: seniorId,
+    member_id: physioUser.user!.id,
+    role: 'physio',
+    status: 'active',
+  });
+  assert.equal(r.error, null);
+  const scheduled = await physio
+    .from('visits')
+    .insert({ senior_id: seniorId, scheduled_at: new Date().toISOString() })
+    .select('id')
+    .single();
+  assert.equal(scheduled.error, null);
+  const notYet = await invoke(physio, 'generate-visit-summary', { visit_id: scheduled.data!.id });
+  assert.equal(notYet.code, 409);
+  console.log('generate-visit-summary: a visit that is not done yet has no summary');
+
+  r = await physio.from('visits').update({ status: 'completed' }).eq('id', scheduled.data!.id);
+  assert.equal(r.error, null);
+  const strangerTry = await invoke(member, 'generate-visit-summary', {
+    visit_id: scheduled.data!.id,
+  });
+  assert.equal(strangerTry.code, 403);
+  console.log("generate-visit-summary: only the senior's physio may generate it");
+
+  const generated = await invoke<{
+    summary: { adherence: { counted: number; prescribed: number }; details: unknown };
+  }>(physio, 'generate-visit-summary', { visit_id: scheduled.data!.id });
+  assert.equal(generated.error, null, `generate-visit-summary failed: ${String(generated.error)}`);
+  assert.equal(generated.data!.summary.adherence.counted, 1);
+  assert.equal(generated.data!.summary.adherence.prescribed, 1);
+  const parts = await physio
+    .from('visit_summaries')
+    .select('part, body')
+    .eq('visit_id', scheduled.data!.id)
+    .order('part');
+  assert.equal(parts.error, null);
+  assert.deepEqual(
+    parts.data!.map((p) => p.part),
+    ['adherence', 'details'],
+  );
+  const details = parts.data![1]!.body as { hurt: { yes: number; answered: number } };
+  assert.deepEqual(details.hurt, { yes: 0, answered: 1 });
+  console.log('generate-visit-summary: the summary is stored in both parts');
 
   const anonymous = createClient<Database>(status.API_URL, status.ANON_KEY, {
     auth: { persistSession: false, autoRefreshToken: false },

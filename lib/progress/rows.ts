@@ -1,5 +1,5 @@
 import type { RecordSource, SessionRecord, SessionStatus } from './counting.ts';
-import { localDate, type LocalDate } from './dates.ts';
+import { addDays, localDate, type LocalDate } from './dates.ts';
 import type { Frequency, PlanItem, Programme, Variation } from './schedule.ts';
 import type { SeniorStats } from './stats.ts';
 
@@ -109,4 +109,13 @@ export function statsRow(seniorId: string, stats: SeniorStats) {
     consecutive_missed_days: stats.consecutiveMissedDays,
     includes_sample_data: stats.includesSampleData,
   };
+}
+
+/**
+ * The last day a visit's summary covers: the day before the visit, so the
+ * next period starts on the visit day. Never before the period starts.
+ */
+export function visitPeriodEnd(periodStart: LocalDate, completedAt: string): LocalDate {
+  const dayBefore = addDays(localDate(completedAt), -1);
+  return dayBefore < periodStart ? periodStart : dayBefore;
 }

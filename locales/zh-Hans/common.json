@@ -236,5 +236,30 @@
     "with": "物理治疗师：{{name}}",
     "withFormer": "物理治疗师：前任物理治疗师",
     "completed": "已完成复诊"
+  },
+  "report": {
+    "thisWeek": "本周到目前为止",
+    "earlierWeek": "之前的一周",
+    "range": "{{from}} 至 {{to}}",
+    "dayLabel": "{{day}}：{{status}}",
+    "status": {
+      "done": "已完成",
+      "partial": "部分完成",
+      "missed": "未做",
+      "rest": "休息日",
+      "upcoming": "未到"
+    },
+    "done": "完成 {{done}} 次，共 {{prescribed}} 次，{{rate}}",
+    "doneBar": "本周锻炼完成情况",
+    "steps": "平均每天 {{value}} 步",
+    "noSteps": "本周没有步数记录。步数需要护膝。",
+    "flagsTitle": "值得留意",
+    "noFlags": "没有需要留意的情况。",
+    "pain_one": "有 {{value}} 次说锻炼时会痛",
+    "pain_other": "有 {{value}} 次说锻炼时会痛",
+    "falls_one": "检测到 {{value}} 次可能跌倒",
+    "falls_other": "检测到 {{value}} 次可能跌倒",
+    "missed_one": "{{value}} 天没做",
+    "missed_other": "{{value}} 天没做"
   }
 }

@@ -2,7 +2,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
-import { WeeklyReportCard } from '@/components/caregiver/WeeklyReportCard';
+import { WeeklyReportCard } from '@/components/shared/WeeklyReportCard';
 import { BackButton } from '@/components/ui/BackButton';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -17,13 +17,12 @@ import { useLanguage } from '@/lib/i18n/useLanguage';
 import { localDate, weekStart } from '@/lib/progress';
 import {
   useHasPlus,
-  useLiveWeeklyReport,
   useNudgedToday,
-  useSavedWeeklyReports,
   useSendNudge,
   useSeniorSummary,
   type SeniorSummary,
 } from '@/lib/queries/caregiver';
+import { useLiveWeeklyReport, useSavedWeeklyReports } from '@/lib/queries/reports';
 import { useSeniorStats } from '@/lib/queries/stats';
 import { errorKey } from '@/lib/supabase/errors';
 
@@ -127,9 +126,11 @@ function Reports({ seniorId }: { seniorId: string }) {
     <>
       {live.isPending ? <Loading /> : null}
       {error ? <Notice tone="error">{t(`common:errors.${errorKey(error)}`)}</Notice> : null}
-      {live.report ? <WeeklyReportCard title={t('report.thisWeek')} report={live.report} /> : null}
+      {live.report ? (
+        <WeeklyReportCard title={t('common:report.thisWeek')} report={live.report} />
+      ) : null}
       {earlier.map((r) => (
-        <WeeklyReportCard key={r.id} title={t('report.earlierWeek')} report={r.report} />
+        <WeeklyReportCard key={r.id} title={t('common:report.earlierWeek')} report={r.report} />
       ))}
     </>
   );

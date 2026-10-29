@@ -31,31 +31,6 @@
     "alerts": "Alerts",
     "visits": "Visits"
   },
-  "report": {
-    "thisWeek": "This week so far",
-    "earlierWeek": "Earlier week",
-    "range": "{{from}} to {{to}}",
-    "dayLabel": "{{day}}: {{status}}",
-    "status": {
-      "done": "Done",
-      "partial": "Part done",
-      "missed": "Missed",
-      "rest": "Rest day",
-      "upcoming": "To come"
-    },
-    "done": "{{done}} of {{prescribed}} sessions done, {{rate}}",
-    "doneBar": "This week's sessions done",
-    "steps": "Average {{value}} steps a day",
-    "noSteps": "No step counts this week. Steps need the sleeve.",
-    "flagsTitle": "Worth a look",
-    "noFlags": "Nothing flagged.",
-    "pain_one": "Said an exercise hurt {{value}} time",
-    "pain_other": "Said an exercise hurt {{value}} times",
-    "falls_one": "{{value}} possible fall detected",
-    "falls_other": "{{value}} possible falls detected",
-    "missed_one": "{{value}} missed day",
-    "missed_other": "{{value}} missed days"
-  },
   "nudge": {
     "title": "Send a gentle nudge",
     "body": "{{name}} sees it on the Today screen. You can send one a day.",

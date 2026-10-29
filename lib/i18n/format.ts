@@ -34,3 +34,13 @@ export function formatTimeOfDay(value: string, language: Language): string {
   // Any date works: build the instant at that Singapore time, then show it in Singapore time.
   return formatTime(new Date(`2026-01-01T${value.slice(0, 5)}:00+08:00`), language);
 }
+
+/** The name of an ISO weekday (1 is Monday, 7 is Sunday). 5 January 2026 is a Monday. */
+export function formatWeekday(
+  isoWeekday: number,
+  language: Language,
+  width: 'long' | 'short' = 'long',
+): string {
+  const day = String(4 + isoWeekday).padStart(2, '0');
+  return formatDate(new Date(`2026-01-${day}T12:00:00+08:00`), language, { weekday: width });
+}

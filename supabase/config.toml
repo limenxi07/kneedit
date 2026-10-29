@@ -421,6 +421,10 @@ deno_version = 2
 [functions.recompute-stats]
 verify_jwt = true
 
+# Called by the physio dashboard when a visit is recorded or marked done.
+[functions.generate-visit-summary]
+verify_jwt = true
+
 [analytics]
 enabled = true
 port = 54327

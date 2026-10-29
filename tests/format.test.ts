@@ -1,4 +1,10 @@
-import { formatDate, formatNumber, formatPercent, formatTime } from '@/lib/i18n/format';
+import {
+  formatDate,
+  formatNumber,
+  formatPercent,
+  formatTime,
+  formatWeekday,
+} from '@/lib/i18n/format';
 import { matchLanguage } from '@/lib/i18n/languages';
 
 describe('matchLanguage', () => {
@@ -33,5 +39,21 @@ describe('formatting', () => {
     expect(formatNumber(4460, 'zh-Hans')).toBe('4,460');
     expect(formatPercent(43, 'en')).toBe('43%');
     expect(formatPercent(43, 'zh-Hans')).toBe('43%');
+  });
+});
+
+describe('formatWeekday', () => {
+  it('names every ISO weekday, Monday to Sunday', () => {
+    expect([1, 2, 3, 4, 5, 6, 7].map((d) => formatWeekday(d, 'en'))).toEqual([
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday',
+    ]);
+    expect(formatWeekday(7, 'zh-Hans')).toBe('星期日');
+    expect(formatWeekday(6, 'en', 'short')).toBe('Sat');
   });
 });
