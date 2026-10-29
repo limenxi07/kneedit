@@ -1,0 +1,89 @@
+{
+  "tabs": {
+    "today": "今天",
+    "friends": "朋友",
+    "sleeve": "护膝",
+    "profile": "个人资料"
+  },
+  "today": {
+    "greeting": "您好，{{name}}",
+    "linkRequests_one": "有 {{count}} 人想加入您的照护团队。",
+    "linkRequests_other": "有 {{count}} 人想加入您的照护团队。",
+    "review": "查看申请",
+    "planTitle": "今天的锻炼",
+    "planSoon": "您今天的锻炼计划会显示在这里。"
+  },
+  "sleeve": {
+    "title": "护膝",
+    "noneTitle": "未连接护膝",
+    "noneBody": "有了 Kneedit 护膝后，它会显示在这里。目前，您每做完一个锻炼就点击完成。"
+  },
+  "friends": {
+    "title": "朋友",
+    "intro": "朋友能看到您的连续天数和本周进度，其他内容都看不到。",
+    "requestsTitle": "好友申请",
+    "requestFrom": "{{name}} 想和您成为朋友。",
+    "accept": "接受",
+    "dismiss": "暂不",
+    "listTitle": "您的朋友",
+    "empty": "还没有朋友。分享您的代码，或在下面输入朋友的代码。",
+    "sentRequest": "申请已发出，等待对方接受",
+    "remove": "移除朋友",
+    "removeConfirm": "移除 {{name}}？你们将不再看到彼此的进度。",
+    "cancel": "取消申请",
+    "cancelConfirm": "取消这个好友申请？",
+    "addTitle": "添加朋友",
+    "codeLabel": "对方的好友代码",
+    "codeHint": "6 个字母和数字，在对方的朋友页面中",
+    "sent": "申请已发出。对方接受后，您会看到对方的名字。",
+    "send": "发送好友申请",
+    "myCodeTitle": "您的好友代码",
+    "myCodeBody": "把这个代码告诉使用 Kneedit 的朋友。",
+    "share": "分享我的代码",
+    "shareMessage": "在 Kneedit 上加我为好友吧。我的好友代码是 {{code}}。"
+  },
+  "linked": {
+    "title": "家人和物理治疗师",
+    "intro": "只有您批准的人才能看到您的进度。您可以随时移除任何人。",
+    "requestsTitle": "等待您回复",
+    "activeTitle": "已与您连接",
+    "empty": "还没有人。请把下面的连接代码告诉家人或您的物理治疗师。",
+    "unnamed": "有人",
+    "request": {
+      "caregiver": "{{name}} 想以家人身份加入。",
+      "physio": "{{name}} 想成为您的物理治疗师。"
+    },
+    "requestShares": {
+      "caregiver": "家人能看到您的连续天数和锻炼次数；如果您选择分享，还能看到您的每周报告。",
+      "physio": "您的物理治疗师能看到您的锻炼记录，并可以设定您的锻炼计划。"
+    },
+    "replacesPhysio": "批准后，对方将取代 {{name}} 成为您的物理治疗师。",
+    "approve": "批准",
+    "decline": "拒绝",
+    "role": {
+      "caregiver": "家人",
+      "physio": "物理治疗师"
+    },
+    "remove": "移除",
+    "removeConfirm": "移除 {{name}}？对方会立即无法再看到您的进度。",
+    "codeTitle": "您的连接代码",
+    "codeBody": "家人和您的物理治疗师输入这个代码或扫描二维码，就可以申请与您连接。",
+    "qrLabel": "您的连接代码的二维码",
+    "newCode": "获取新代码",
+    "newCodeConfirm": "获取新代码？旧代码将失效。已经连接的人仍保持连接。"
+  },
+  "profile": {
+    "title": "个人资料",
+    "sharingTitle": "您分享的内容",
+    "sharingIntro": "您的物理治疗师始终能看到您的锻炼记录。",
+    "shareReport": "给家人的每周报告",
+    "shareReportBody": "家人能看到您哪几天做了锻炼、您的回答和步数。",
+    "shareFalls": "给家人的可能跌倒提醒",
+    "shareFallsBody": "护膝检测到可能跌倒时，会通知家人。",
+    "leaderboard": "在朋友排行榜上显示我",
+    "leaderboardBody": "朋友能看到您的连续天数和本周进度。",
+    "peopleTitle": "联系人",
+    "linkedPeople": "家人和物理治疗师",
+    "friends": "朋友"
+  }
+}

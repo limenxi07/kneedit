@@ -1,0 +1,89 @@
+{
+  "tabs": {
+    "today": "Today",
+    "friends": "Friends",
+    "sleeve": "Sleeve",
+    "profile": "Profile"
+  },
+  "today": {
+    "greeting": "Hello, {{name}}",
+    "linkRequests_one": "{{count}} person wants to join your care team.",
+    "linkRequests_other": "{{count}} people want to join your care team.",
+    "review": "Review requests",
+    "planTitle": "Today's exercises",
+    "planSoon": "Your exercise plan for today will show here."
+  },
+  "sleeve": {
+    "title": "Sleeve",
+    "noneTitle": "No sleeve connected",
+    "noneBody": "When you have a Kneedit sleeve, it shows here. For now, you tap Done after each exercise."
+  },
+  "friends": {
+    "title": "Friends",
+    "intro": "Friends see your streak and this week's progress. Nothing else.",
+    "requestsTitle": "Friend requests",
+    "requestFrom": "{{name}} wants to be friends.",
+    "accept": "Accept",
+    "dismiss": "Not now",
+    "listTitle": "Your friends",
+    "empty": "No friends yet. Share your code, or add a friend's code below.",
+    "sentRequest": "Request sent, waiting for them to accept",
+    "remove": "Remove friend",
+    "removeConfirm": "Remove {{name}}? You'll stop seeing each other's progress.",
+    "cancel": "Cancel request",
+    "cancelConfirm": "Cancel this friend request?",
+    "addTitle": "Add a friend",
+    "codeLabel": "Their friend code",
+    "codeHint": "6 letters and numbers, from their Friends screen",
+    "sent": "Request sent. You'll see their name once they accept.",
+    "send": "Send friend request",
+    "myCodeTitle": "Your friend code",
+    "myCodeBody": "Give this code to friends who use Kneedit.",
+    "share": "Share my code",
+    "shareMessage": "Add me as a friend on Kneedit. My friend code is {{code}}."
+  },
+  "linked": {
+    "title": "Family and physiotherapist",
+    "intro": "Only people you approve can see your progress. You can remove anyone at any time.",
+    "requestsTitle": "Waiting for you",
+    "activeTitle": "Linked to you",
+    "empty": "Nobody yet. Give your link code below to family or your physiotherapist.",
+    "unnamed": "Someone",
+    "request": {
+      "caregiver": "{{name}} wants to join as family.",
+      "physio": "{{name}} wants to join as your physiotherapist."
+    },
+    "requestShares": {
+      "caregiver": "Family see your streak and sessions, and, if you share it, your weekly report.",
+      "physio": "Your physiotherapist sees your exercise records and can set your programme."
+    },
+    "replacesPhysio": "Approving replaces {{name}} as your physiotherapist.",
+    "approve": "Approve",
+    "decline": "Decline",
+    "role": {
+      "caregiver": "Family",
+      "physio": "Physiotherapist"
+    },
+    "remove": "Remove",
+    "removeConfirm": "Remove {{name}}? They stop seeing your progress at once.",
+    "codeTitle": "Your link code",
+    "codeBody": "Family and your physiotherapist type this code, or scan the QR code, to ask to link to you.",
+    "qrLabel": "QR code of your link code",
+    "newCode": "Get a new code",
+    "newCodeConfirm": "Get a new code? The old one stops working. People already linked stay linked."
+  },
+  "profile": {
+    "title": "Profile",
+    "sharingTitle": "What you share",
+    "sharingIntro": "Your physiotherapist always sees your exercise records.",
+    "shareReport": "Weekly report for family",
+    "shareReportBody": "Family see which days you exercised, your answers and your steps.",
+    "shareFalls": "Possible fall alerts for family",
+    "shareFallsBody": "Family are told when the sleeve detects a possible fall.",
+    "leaderboard": "Show me on friends' leaderboard",
+    "leaderboardBody": "Friends see your streak and this week's progress.",
+    "peopleTitle": "People",
+    "linkedPeople": "Family and physiotherapist",
+    "friends": "Friends"
+  }
+}

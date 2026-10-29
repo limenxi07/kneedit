@@ -1,0 +1,15 @@
+{
+  "header": {
+    "title": "Kneedit 物理治疗师版",
+    "account": "账户"
+  },
+  "patients": {
+    "title": "病人",
+    "emptyTitle": "还没有病人",
+    "emptyBody": "使用病人 Kneedit 个人资料中的连接代码添加病人。病人在应用中批准申请。",
+    "pendingTitle": "已发出的申请",
+    "addTitle": "添加病人",
+    "addBody": "请向病人索取 Kneedit 个人资料中的连接代码。",
+    "sent": "申请已发出。病人批准后会出现在这里。"
+  }
+}

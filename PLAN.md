@@ -41,15 +41,20 @@ Approved on 22 Oct 2026, with two revisions: Plus features are unlocked and labe
 app/
   _layout.tsx              providers: fonts, i18n, auth, query client
   index.tsx                routes to the right context after sign-in
-  (auth)/                  sign-in, callback, onboarding
+  (auth)/                  welcome (sign-in), verify (code), auth/callback, onboarding
   (senior)/(tabs)/         today, friends, sleeve, profile
   (senior)/session/        session flow stack
-  (senior)/...             link requests, visits, add friend
-  (caregiver)/...          overview, report, alerts, notes, checkout, visits, account
+  (senior)/...             linked-people (requests, link code and QR), visits
+  (caregiver)/...          overview, link-pending, report, alerts, notes, checkout, visits
+  account.tsx              account for caregivers and physios (seniors use Profile)
+  link-senior.tsx          link a family member by code or QR, open to any account
+  delete-account/          the three deletion steps, plus reauth
+  plus.tsx                 what Plus includes (the Plus badge opens it)
   (physio)/_layout.tsx     desktop shell (sidebar and header), web-first
   (physio)/...             patients, patients/[id]/{overview,visits,programme,details}, agenda, library
 components/ui/             Text, Heading, Button, Card, Toggle, SampleDataTag, Screen ...
 components/{senior,caregiver,physio}/
+components/shared/         guards, role switcher, redeem code form, QR scanner, account actions
 lib/supabase/              client and generated database.types.ts
 lib/progress/              pure rules: schedule, counting, streak, rate, leaderboard, weekly report, visit summary
 lib/sleeve/                SleeveSource, ManualSource, FakeSource, BleSource (stub)

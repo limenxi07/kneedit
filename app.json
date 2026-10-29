@@ -31,6 +31,14 @@
       "expo-localization",
       "expo-font",
       [
+        "expo-camera",
+        {
+          "cameraPermission": "Kneedit uses the camera to scan a family member's QR code. It takes no photos.",
+          "microphonePermission": false,
+          "recordAudioAndroid": false
+        }
+      ],
+      [
         "expo-splash-screen",
         {
           "backgroundColor": "#F7FAFD",
@@ -42,6 +50,10 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "locales": {
+      "en": "./locales/native/en.json",
+      "zh-Hans": "./locales/native/zh-Hans.json"
     }
   }
 }

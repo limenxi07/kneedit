@@ -8,19 +8,216 @@
     "en": "English",
     "zh-Hans": "中文"
   },
-  "placeholder": {
-    "title": "Welcome to Kneedit",
-    "body": "This is the first build of the Kneedit app. Signing in, today's exercises, family reports and the physio dashboard arrive in the next phases.",
-    "rolesTitle": "Who Kneedit is for",
-    "senior": "You do the exercises your physiotherapist prescribed.",
-    "caregiver": "Your family sees that the exercises got done.",
-    "physio": "Your physiotherapist sees what happened between visits."
-  },
   "safety": {
     "stopIfPain": "Stop and contact your clinician if pain worsens."
   },
+  "disclaimer": "Kneedit is not a medical device. It does not give medical advice or replace professional care.",
   "notFound": {
     "title": "This page doesn't exist",
     "back": "Go to the home screen"
+  },
+  "actions": {
+    "back": "Back",
+    "backArrow": "< Back",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "tryAgain": "Try again",
+    "keep": "Keep it"
+  },
+  "status": {
+    "loading": "Loading",
+    "sending": "Sending",
+    "saving": "Saving",
+    "signingIn": "Signing in",
+    "deleting": "Deleting"
+  },
+  "errors": {
+    "invalidCode": "That code doesn't match anyone. Check it and try again.",
+    "ownCode": "That is your own code. Ask the other person for theirs.",
+    "notFound": "This was already answered or removed.",
+    "notAllowed": "Your account can't do this.",
+    "notASenior": "Only people who do the exercises can do this.",
+    "demoMixing": "Demo accounts can only connect to other demo accounts.",
+    "confirmationMismatch": "The word doesn't match. Type it exactly as shown.",
+    "demoAccount": "Demo accounts can't be deleted here.",
+    "reauthRequired": "Please sign in again first.",
+    "codeExpired": "That code has expired or is wrong. Ask for a new one.",
+    "tooManyTries": "Too many tries. Wait a minute, then try again.",
+    "invalidEmail": "Check the email address and try again.",
+    "providerUnavailable": "This way of signing in isn't set up yet. Use your email instead.",
+    "noAccount": "We couldn't find an account for that email.",
+    "network": "Kneedit can't reach the internet. Check your connection and try again.",
+    "generic": "Something went wrong. Please try again."
+  },
+  "sampleData": {
+    "tag": "Sample data",
+    "label": "Sample data: these numbers are made up for the demo."
+  },
+  "plus": {
+    "badge": "Plus",
+    "badgeLabel": "Kneedit Plus feature",
+    "badgeHint": "Opens what Kneedit Plus includes",
+    "title": "Kneedit Plus",
+    "body": "Plus gives family and the physiotherapist a fuller picture of how the exercises are going.",
+    "includesTitle": "Plus includes",
+    "includes": {
+      "report": "A weekly report for family",
+      "falls": "Possible fall alerts for family",
+      "notes": "Notes from family for the physiotherapist",
+      "nudges": "Gentle nudges from family",
+      "visits": "Visit bookings in the family calendar",
+      "physio": "Pain and ease answers and full visit summaries for the physiotherapist"
+    },
+    "price": "Kneedit Plus is SGD 15 a month. The Kneedit sleeve is SGD 29, paid once.",
+    "prototype": "Prototype, no payment taken.",
+    "unlocked": "Every Plus feature is unlocked for now."
+  },
+  "welcome": {
+    "title": "Welcome to Kneedit",
+    "signInTitle": "Sign in",
+    "signInBody": "New to Kneedit? Signing in also creates your account. We email you a code, so there is no password to remember.",
+    "emailLabel": "Your email address",
+    "sendCode": "Email me a sign-in code",
+    "or": "or",
+    "google": "Continue with Google"
+  },
+  "verify": {
+    "title": "Check your email",
+    "body": "We sent a 6-digit code to {{email}}. Type it below, or tap the link in the email on this phone.",
+    "codeLabel": "6-digit code",
+    "signIn": "Sign in",
+    "resend": "Send a new code",
+    "resent": "A new code is on its way.",
+    "otherEmail": "Use a different email"
+  },
+  "callback": {
+    "tryCode": "You can also sign in by typing the 6-digit code from the email.",
+    "back": "Back to sign in"
+  },
+  "onboarding": {
+    "roleTitle": "How will you use Kneedit?",
+    "role": {
+      "senior": {
+        "title": "I do the exercises",
+        "body": "Follow the knee exercises your physiotherapist gave you."
+      },
+      "caregiver": {
+        "title": "I help a family member",
+        "body": "See that the exercises got done, and cheer them on."
+      },
+      "physio": {
+        "title": "I'm a physiotherapist",
+        "body": "See how your patients are doing between visits."
+      }
+    },
+    "nameLabel": "Your name",
+    "senior": {
+      "title": "About you",
+      "body": "This helps your family and physiotherapist know it's you.",
+      "nameHint": "Your family, friends and physiotherapist see this name.",
+      "birthYearLabel": "Year you were born",
+      "birthYearHint": "For example, 1952",
+      "birthYearInvalid": "Please check the year.",
+      "genderLabel": "Gender",
+      "reminderLabel": "Daily reminder",
+      "suggested": "{{time}} (suggested)",
+      "reminderHint": "You can change this later in Profile."
+    },
+    "member": {
+      "title": {
+        "caregiver": "What should we call you?",
+        "physio": "What should patients call you?"
+      },
+      "nameHint": {
+        "caregiver": "Your family member sees this name when you ask to link.",
+        "physio": "Patients see this name when you ask to link."
+      }
+    }
+  },
+  "gender": {
+    "female": "Female",
+    "male": "Male",
+    "prefer_not_to_say": "Prefer not to say"
+  },
+  "linkCode": {
+    "fieldLabel": "Their link code",
+    "fieldHint": "6 letters and numbers, from their Kneedit Profile",
+    "send": "Send request",
+    "spelled": "Code: {{code}}"
+  },
+  "scan": {
+    "start": "Scan their QR code",
+    "instructions": "Point the camera at the QR code on their Kneedit Profile.",
+    "cameraLabel": "Camera, looking for a QR code",
+    "permission": "Kneedit needs the camera to scan the QR code. It takes no photos.",
+    "permissionDenied": "Camera access is off for Kneedit. You can type the code instead, or allow the camera in your phone's settings.",
+    "allowCamera": "Allow the camera",
+    "typeInstead": "Type the code instead"
+  },
+  "roles": {
+    "switchTitle": "Other ways to use Kneedit",
+    "open": {
+      "senior": "Go to my exercises",
+      "caregiver": "Go to my family",
+      "physio": "Go to my patients"
+    },
+    "add": {
+      "caregiver": "Help a family member",
+      "senior": "Do the exercises myself"
+    }
+  },
+  "account": {
+    "title": "Account",
+    "signOut": "Sign out",
+    "delete": "Delete account",
+    "deleteHint": "Explains what is deleted before anything happens"
+  },
+  "pendingRequest": {
+    "title": "Waiting for approval",
+    "sent": "Request sent on {{date}}. You'll see their name once they approve it.",
+    "cancel": "Cancel request",
+    "cancelConfirm": "Cancel this request? You can send a new one later."
+  },
+  "deleteAccount": {
+    "title": "Delete your account",
+    "demo": "This is a demo account. The demo is reset with the seed script, so it can't be deleted here.",
+    "permanent": "Deleting your account is permanent. It can't be undone.",
+    "profile": "Your name, email and sign-in are deleted, and you are signed out.",
+    "senior": {
+      "title": "Your exercises",
+      "history": "Your exercise history, answers, reports, visits and programme are deleted.",
+      "links": "Your links, friends and codes are deleted.",
+      "loseAccess": "These people lose access at once:",
+      "member": {
+        "caregiver": "{{name}}, family",
+        "physio": "{{name}}, physiotherapist"
+      }
+    },
+    "caregiver": {
+      "title": "Your family links",
+      "links": "Your links to family members end at once.",
+      "notes": "Notes you wrote stay on their record, shown as from a former caregiver."
+    },
+    "physio": {
+      "title": "Your patients",
+      "links": "Your links to patients end at once.",
+      "records": "Programmes, visits and visit summaries you wrote stay on their record, shown as from a former physiotherapist."
+    },
+    "reauth": {
+      "title": "Please sign in again",
+      "body": "To keep your account safe, we need a fresh sign-in before deleting it. We'll email a code to {{email}}.",
+      "send": "Email me a code"
+    },
+    "confirm": {
+      "title": "Are you sure?",
+      "body": "To delete your account, type {{word}} below.",
+      "fieldLabel": "Type {{word}}",
+      "button": "Delete my account"
+    },
+    "done": {
+      "title": "Your account is deleted",
+      "body": "Thank you for using Kneedit.",
+      "button": "Back to the welcome screen"
+    }
   }
 }

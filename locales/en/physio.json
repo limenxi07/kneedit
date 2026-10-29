@@ -1,0 +1,15 @@
+{
+  "header": {
+    "title": "Kneedit for physiotherapists",
+    "account": "Account"
+  },
+  "patients": {
+    "title": "Patients",
+    "emptyTitle": "No patients yet",
+    "emptyBody": "Add a patient with the link code from their Kneedit Profile. They approve the request in the app.",
+    "pendingTitle": "Requests sent",
+    "addTitle": "Add a patient",
+    "addBody": "Ask your patient for the link code in their Kneedit Profile.",
+    "sent": "Request sent. The patient appears here once they approve it."
+  }
+}

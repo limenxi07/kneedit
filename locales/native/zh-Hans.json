@@ -1,0 +1,5 @@
+{
+  "ios": {
+    "NSCameraUsageDescription": "Kneedit 使用相机扫描家人的二维码，不会拍照。"
+  }
+}
