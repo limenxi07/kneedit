@@ -141,16 +141,19 @@ assets/fonts/, assets/exercise-media/
 | `leaderboard_weeks` | senior_id, week_start, week_rate, streak | Last week's standings, archived on Monday |
 | `caregiver_notes` | senior_id, author_id, body, created_at | Plus |
 | `weekly_reports` | senior_id, week_start, report jsonb, includes_sample_data, generated_at | Generated on Monday (Phase 7) |
-| `visits` | senior_id, physio_id, scheduled_at, duration_min, location, status, completed_at, period_start, summary jsonb | One table covers booked appointments and completed visits. |
+| `visits` | senior_id, physio_id, scheduled_at, duration_min, location, status, completed_at, period_start | One table covers booked appointments and completed visits. |
+| `visit_summaries` | visit_id, part (`adherence` or `details`), body jsonb, includes_sample_data | Two rows per completed visit, so RLS can give a physio on Free the adherence part only. Server code writes them. |
 | `alerts` | senior_id, kind, details, source, created_at | |
 | `nudges` | senior_id, sender_id, created_at, seen_at | Rate-limited |
 | `push_tokens` | profile_id, token, platform | |
 
-**RPCs** (`security definer`, each with pgTAP tests):
+**RPCs** (`security definer`, each with pgTAP tests). Helpers such as `is_linked` and `has_plus` live in a `private` schema that the API doesn't expose, so only these can be called:
 
 - Linking: `redeem_link_code(code, role)` returns only a link id, so the requester learns nothing until the senior approves. Also `respond_to_link`, `revoke_link` (the senior or the member) and `regenerate_link_code`.
 - Friends: `send_friend_request(friend_code)`, `respond_to_friend_request`, `remove_friend`.
 - `get_friend_leaderboard()` returns name, streak, week_rate and includes_sample_data only.
+- `list_friendships()` returns the caller's friends and requests. A sent request shows as pending with no name until accepted, even if it was dismissed; the `friendships` table itself isn't readable.
+- `save_prescription(senior_id, start_date, variation, items)` saves a new programme version atomically. Only the active physio; it can't start in the past, so history never changes.
 - `mock_set_plan(senior_id, plan)` works for an active caregiver or the senior.
 - `delete_my_account(confirmation)` deletes the caller's `auth.users` row only if `confirmation` matches, then cascades as described under Account deletion. It refuses demo accounts.
 
