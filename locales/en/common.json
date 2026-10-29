@@ -1,0 +1,26 @@
+{
+  "app": {
+    "name": "Kneedit",
+    "tagline": "Keep up your knee exercises at home"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "zh-Hans": "中文"
+  },
+  "placeholder": {
+    "title": "Welcome to Kneedit",
+    "body": "This is the first build of the Kneedit app. Signing in, today's exercises, family reports and the physio dashboard arrive in the next phases.",
+    "rolesTitle": "Who Kneedit is for",
+    "senior": "You do the exercises your physiotherapist prescribed.",
+    "caregiver": "Your family sees that the exercises got done.",
+    "physio": "Your physiotherapist sees what happened between visits."
+  },
+  "safety": {
+    "stopIfPain": "Stop and contact your clinician if pain worsens."
+  },
+  "notFound": {
+    "title": "This page doesn't exist",
+    "back": "Go to the home screen"
+  }
+}
