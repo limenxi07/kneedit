@@ -1112,6 +1112,7 @@ export type Database = {
         Returns: string;
       };
       send_friend_request: { Args: { p_friend_code: string }; Returns: string };
+      simulate_possible_fall: { Args: { p_senior: string }; Returns: string };
     };
     Enums: {
       alert_kind: 'missed_days' | 'possible_fall';

@@ -63,7 +63,7 @@ select is(
   array[
     'delete_my_account', 'get_friend_leaderboard', 'list_friendships', 'mock_set_plan', 'redeem_link_code',
     'regenerate_link_code', 'remove_friend', 'respond_to_friend_request', 'respond_to_link',
-    'revoke_link', 'save_prescription', 'send_friend_request'
+    'revoke_link', 'save_prescription', 'send_friend_request', 'simulate_possible_fall'
   ],
   'the API exposes only the RPCs; helpers live in the private schema'
 );

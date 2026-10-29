@@ -220,11 +220,7 @@
     "intro": "和物理治疗师的复诊，由物理治疗师安排。",
     "upcomingTitle": "即将到来",
     "noneUpcoming": "还没有安排复诊。",
-    "pastTitle": "以前的复诊",
-    "when": "{{date}} {{time}}",
-    "with": "物理治疗师：{{name}}",
-    "withFormer": "物理治疗师：前任物理治疗师",
-    "completed": "已完成复诊"
+    "pastTitle": "以前的复诊"
   },
   "reminder": {
     "title": "每日提醒",

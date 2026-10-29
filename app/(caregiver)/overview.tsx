@@ -17,8 +17,9 @@ import { useSeniorStats } from '@/lib/queries/stats';
 import { errorKey } from '@/lib/supabase/errors';
 
 /**
- * The caregiver's family: each linked senior with the free stats, and any
- * request still waiting. The weekly report, notes and nudges arrive in Phase 5.
+ * The caregiver's family: each linked senior with the free stats and a way
+ * in to their weekly report, notes, alerts and visits, then any request
+ * still waiting.
  */
 export default function Overview() {
   const { t } = useTranslation(['caregiver', 'common']);
@@ -68,6 +69,10 @@ export default function Overview() {
             ) : (
               <Text>{t('overview.noStats', { name: l.name })}</Text>
             )}
+            <Button
+              label={t('overview.open', { name: l.name })}
+              onPress={() => router.push({ pathname: '/family/[id]', params: { id: l.senior_id } })}
+            />
           </Card>
         );
       })}
@@ -76,7 +81,12 @@ export default function Overview() {
         <PendingRequest key={l.id} link={l} />
       ))}
 
-      <Button label={t('overview.link')} onPress={() => router.push('/link-senior')} />
+      <Button
+        label={t('overview.link')}
+        variant="secondary"
+        fullWidth
+        onPress={() => router.push('/link-senior')}
+      />
       <Button
         label={t('overview.account')}
         variant="secondary"

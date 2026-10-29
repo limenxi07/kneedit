@@ -220,11 +220,7 @@
     "intro": "Visits with your physiotherapist. Your physiotherapist books them.",
     "upcomingTitle": "Coming up",
     "noneUpcoming": "No visits booked.",
-    "pastTitle": "Past visits",
-    "when": "{{date}}, {{time}}",
-    "with": "With {{name}}",
-    "withFormer": "With a former physiotherapist",
-    "completed": "Visit done"
+    "pastTitle": "Past visits"
   },
   "reminder": {
     "title": "Daily reminder",

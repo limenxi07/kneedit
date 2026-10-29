@@ -119,14 +119,18 @@ export type Visit = Tables<'visits'> & { physioName: string | null };
 
 /** The senior's visits, booked and past, with the physio's name (null: a former physio). */
 export function useMyVisits() {
-  const userId = useUserId();
+  return useVisitsFor(useUserId());
+}
+
+/** A senior's visits, for the senior or their care team (RLS decides). */
+export function useVisitsFor(seniorId: string) {
   return useQuery({
-    queryKey: ['visits', userId],
+    queryKey: ['visits', seniorId],
     queryFn: async (): Promise<Visit[]> => {
       const { data, error } = await supabase
         .from('visits')
         .select('*')
-        .eq('senior_id', userId)
+        .eq('senior_id', seniorId)
         .neq('status', 'cancelled')
         .order('scheduled_at');
       if (error) throw error;

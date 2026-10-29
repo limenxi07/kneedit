@@ -9,7 +9,8 @@
     "monthSessions_other": "{{value}} sessions this month",
     "noStats": "No exercises recorded for {{name}} yet.",
     "link": "Link a family member",
-    "account": "Account"
+    "account": "Account",
+    "open": "Open {{name}}"
   },
   "link": {
     "title": "Link a family member",
@@ -20,5 +21,83 @@
     "body": "Your family member needs to approve it. In Kneedit, they open Profile, then Family and physiotherapist.",
     "private": "Until they approve, you see nothing about them.",
     "done": "Back to your family"
+  },
+  "member": {
+    "statsTitle": "Progress",
+    "reportTitle": "Weekly report",
+    "needsPlus": "This is part of Kneedit Plus. Tap the Plus badge to see what it includes.",
+    "reportOff": "{{name}} has turned off the weekly report for family. {{name}} can turn it on again in Profile.",
+    "notes": "Notes for the physiotherapist",
+    "alerts": "Alerts",
+    "visits": "Visits"
+  },
+  "report": {
+    "thisWeek": "This week so far",
+    "earlierWeek": "Earlier week",
+    "range": "{{from}} to {{to}}",
+    "dayLabel": "{{day}}: {{status}}",
+    "status": {
+      "done": "Done",
+      "partial": "Part done",
+      "missed": "Missed",
+      "rest": "Rest day",
+      "upcoming": "To come"
+    },
+    "done": "{{done}} of {{prescribed}} sessions done, {{rate}}",
+    "doneBar": "This week's sessions done",
+    "steps": "Average {{value}} steps a day",
+    "noSteps": "No step counts this week. Steps need the sleeve.",
+    "flagsTitle": "Worth a look",
+    "noFlags": "Nothing flagged.",
+    "pain_one": "Said an exercise hurt {{value}} time",
+    "pain_other": "Said an exercise hurt {{value}} times",
+    "falls_one": "{{value}} possible fall detected",
+    "falls_other": "{{value}} possible falls detected",
+    "missed_one": "{{value}} missed day",
+    "missed_other": "{{value}} missed days"
+  },
+  "nudge": {
+    "title": "Send a gentle nudge",
+    "body": "{{name}} sees it on the Today screen. You can send one a day.",
+    "send": "Send a gentle nudge",
+    "sent": "Nudge sent today. {{name}} sees it on the Today screen."
+  },
+  "notes": {
+    "title": "Notes for the physiotherapist",
+    "intro": "Tell {{name}}'s physiotherapist how things are going at home. {{name}} and the rest of the family can read these notes too.",
+    "fieldLabel": "New note",
+    "fieldHint": "For example, how the stairs or walking felt this week.",
+    "save": "Save note",
+    "saved": "Note saved.",
+    "listTitle": "Notes so far",
+    "empty": "No notes yet.",
+    "from": "From {{name}}, {{date}}",
+    "fromFormer": "From a former caregiver, {{date}}"
+  },
+  "alerts": {
+    "title": "Alerts",
+    "intro": "Possible falls the sleeve detects, and days in a row when {{name}} missed the exercises.",
+    "notEmergency": "A possible fall is what the sleeve noticed. It may not be a real fall. Kneedit does not call for help, so if you are worried, contact {{name}} yourself.",
+    "fallsOff": "{{name}} has turned off possible fall alerts for family. Missed-day alerts still show here.",
+    "empty": "No alerts.",
+    "possibleFall": "Possible fall detected",
+    "missedDays_one": "Missed the exercises {{value}} day in a row",
+    "missedDays_other": "Missed the exercises {{value}} days in a row",
+    "missed": "Missed the exercises several days in a row",
+    "when": "{{date}}, {{time}}",
+    "demoTitle": "Demo",
+    "demoBody": "This is a demo account, so you can pretend the sleeve detected a possible fall. It is saved as sample data.",
+    "simulate": "Simulate a possible fall"
+  },
+  "visits": {
+    "title": "{{name}}'s visits",
+    "intro": "Visits with {{name}}'s physiotherapist. Add one to your calendar to remember it.",
+    "upcomingTitle": "Coming up",
+    "none": "No visits booked.",
+    "pastTitle": "Past visits",
+    "addToCalendar": "Add to calendar",
+    "addToCalendarHint": "Opens the visit in your calendar app",
+    "calendarTitle": "Physiotherapy visit: {{name}}",
+    "calendarBody": "Booked in Kneedit."
   }
 }

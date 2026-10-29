@@ -110,7 +110,7 @@ export default function Today() {
         <Card>
           <Text variant="subheading">{t('today.visitTitle')}</Text>
           <Text variant="bodyStrong">
-            {t('visits.when', {
+            {t('common:visits.when', {
               date: formatDate(new Date(upcoming.scheduled_at), language, {
                 weekday: 'long',
                 day: 'numeric',
@@ -121,8 +121,8 @@ export default function Today() {
           </Text>
           <Text>
             {upcoming.physioName
-              ? t('visits.with', { name: upcoming.physioName })
-              : t('visits.withFormer')}
+              ? t('common:visits.with', { name: upcoming.physioName })
+              : t('common:visits.withFormer')}
           </Text>
           {upcoming.location ? <Text>{upcoming.location}</Text> : null}
         </Card>

@@ -47,7 +47,9 @@
     "providerUnavailable": "This way of signing in isn't set up yet. Use your email instead.",
     "noAccount": "We couldn't find an account for that email.",
     "network": "Kneedit can't reach the internet. Check your connection and try again.",
-    "generic": "Something went wrong. Please try again."
+    "generic": "Something went wrong. Please try again.",
+    "nudgeRateLimited": "You already sent a nudge today. You can send another tomorrow.",
+    "demoOnly": "This only works on demo accounts."
   },
   "sampleData": {
     "tag": "Sample data",
@@ -70,7 +72,16 @@
     },
     "price": "Kneedit Plus is SGD 15 a month. The Kneedit sleeve is SGD 29, paid once.",
     "prototype": "Prototype, no payment taken.",
-    "unlocked": "Every Plus feature is unlocked for now."
+    "unlocked": "Every Plus feature is unlocked for now.",
+    "checkoutTitle": "Try Plus",
+    "you": "You",
+    "onFree": "On Free",
+    "onPlus": "On Plus",
+    "start": "Start Plus (prototype, no payment)",
+    "stop": "Go back to Free",
+    "nothingChanged": "Nothing changed, because every Plus feature is already unlocked for now.",
+    "started": "Plus is on. Prototype, no payment taken.",
+    "stopped": "Back on Free."
   },
   "welcome": {
     "title": "Welcome to Kneedit",
@@ -219,5 +230,11 @@
       "body": "Thank you for using Kneedit.",
       "button": "Back to the welcome screen"
     }
+  },
+  "visits": {
+    "when": "{{date}}, {{time}}",
+    "with": "With {{name}}",
+    "withFormer": "With a former physiotherapist",
+    "completed": "Visit done"
   }
 }
