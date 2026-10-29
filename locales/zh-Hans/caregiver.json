@@ -9,7 +9,8 @@
     "monthSessions_other": "本月锻炼 {{value}} 次",
     "noStats": "{{name}} 还没有锻炼记录。",
     "link": "连接家人",
-    "account": "账户"
+    "account": "账户",
+    "open": "查看 {{name}}"
   },
   "link": {
     "title": "连接家人",
@@ -20,5 +21,83 @@
     "body": "需要您的家人批准。家人在 Kneedit 中打开个人资料，然后打开家人和物理治疗师。",
     "private": "在家人批准之前，您看不到家人的任何信息。",
     "done": "返回您的家人"
+  },
+  "member": {
+    "statsTitle": "锻炼情况",
+    "reportTitle": "每周报告",
+    "needsPlus": "这是 Kneedit Plus 的功能。点击 Plus 标签，看看包括哪些内容。",
+    "reportOff": "{{name}} 已关闭给家人的每周报告。{{name}} 可以在个人资料里重新开启。",
+    "notes": "给物理治疗师的备注",
+    "alerts": "提醒",
+    "visits": "复诊"
+  },
+  "report": {
+    "thisWeek": "本周到目前为止",
+    "earlierWeek": "之前的一周",
+    "range": "{{from}} 至 {{to}}",
+    "dayLabel": "{{day}}：{{status}}",
+    "status": {
+      "done": "已完成",
+      "partial": "部分完成",
+      "missed": "未做",
+      "rest": "休息日",
+      "upcoming": "未到"
+    },
+    "done": "完成 {{done}} 次，共 {{prescribed}} 次，{{rate}}",
+    "doneBar": "本周锻炼完成情况",
+    "steps": "平均每天 {{value}} 步",
+    "noSteps": "本周没有步数记录。步数需要护膝。",
+    "flagsTitle": "值得留意",
+    "noFlags": "没有需要留意的情况。",
+    "pain_one": "有 {{value}} 次说锻炼时会痛",
+    "pain_other": "有 {{value}} 次说锻炼时会痛",
+    "falls_one": "检测到 {{value}} 次可能跌倒",
+    "falls_other": "检测到 {{value}} 次可能跌倒",
+    "missed_one": "{{value}} 天没做",
+    "missed_other": "{{value}} 天没做"
+  },
+  "nudge": {
+    "title": "送上温馨提醒",
+    "body": "{{name}} 会在「今天」页面看到。每天可以送一次。",
+    "send": "送上温馨提醒",
+    "sent": "今天已送出提醒。{{name}} 会在「今天」页面看到。"
+  },
+  "notes": {
+    "title": "给物理治疗师的备注",
+    "intro": "告诉 {{name}} 的物理治疗师在家的情况。{{name}} 和其他家人也能看到这些备注。",
+    "fieldLabel": "新备注",
+    "fieldHint": "比如，这周上下楼梯或走路的感觉。",
+    "save": "保存备注",
+    "saved": "备注已保存。",
+    "listTitle": "已有的备注",
+    "empty": "还没有备注。",
+    "from": "{{name}}，{{date}}",
+    "fromFormer": "前任照顾者，{{date}}"
+  },
+  "alerts": {
+    "title": "提醒",
+    "intro": "护膝检测到的可能跌倒，以及 {{name}} 连续几天没做锻炼的情况。",
+    "notEmergency": "可能跌倒是护膝察觉到的情况，不一定真的跌倒。Kneedit 不会代为求助，如果您担心，请直接联系 {{name}}。",
+    "fallsOff": "{{name}} 已关闭给家人的可能跌倒提醒。没做锻炼的提醒仍会显示在这里。",
+    "empty": "没有提醒。",
+    "possibleFall": "检测到可能跌倒",
+    "missedDays_one": "连续 {{value}} 天没做锻炼",
+    "missedDays_other": "连续 {{value}} 天没做锻炼",
+    "missed": "连续几天没做锻炼",
+    "when": "{{date}} {{time}}",
+    "demoTitle": "演示",
+    "demoBody": "这是演示账户，您可以假装护膝检测到可能跌倒。它会存为示例数据。",
+    "simulate": "模拟一次可能跌倒"
+  },
+  "visits": {
+    "title": "{{name}} 的复诊",
+    "intro": "{{name}} 和物理治疗师的复诊。加到日历里，以免忘记。",
+    "upcomingTitle": "即将到来",
+    "none": "还没有安排复诊。",
+    "pastTitle": "以前的复诊",
+    "addToCalendar": "加到日历",
+    "addToCalendarHint": "在日历应用中打开这次复诊",
+    "calendarTitle": "{{name}} 的复诊（Kneedit）",
+    "calendarBody": "在 Kneedit 中预约。"
   }
 }

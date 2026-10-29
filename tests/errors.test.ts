@@ -9,7 +9,6 @@ const NOT_SHOWN = [
   'not_signed_in',
   'session_finished',
   'session_empty',
-  'nudge_rate_limited',
   'fake_data_for_real_account',
   'start_in_past',
   'no_items',

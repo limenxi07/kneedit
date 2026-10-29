@@ -75,7 +75,7 @@ types/                   global type declarations
 ```
 
 - Never put non-route code inside `app/`.
-- Route groups don't appear in URLs, so every route path is unique across groups: senior tabs are `/today`, `/friends`, `/sleeve`, `/profile`; caregiver home is `/overview`; physio home is `/patients`. Screens open to more than one role (`/account`, `/link-senior`, `/delete-account`, `/plus`) sit at the top of `app/`.
+- Route groups don't appear in URLs, so every route path is unique across groups: senior tabs are `/today`, `/friends`, `/sleeve`, `/profile`; caregiver home is `/overview`, with each family member under `/family/[id]`; physio home is `/patients`. Screens open to more than one role (`/account`, `/link-senior`, `/delete-account`, `/plus`) sit at the top of `app/`.
 - Guard screens with `components/shared/Guards` (`RequireSignedIn`, `RequireRole`). Guards only decide navigation; RLS decides what anyone can read.
 - Import with the `@/` alias (`@/components/ui/Text`, `@/lib/i18n`).
 - Except in `lib/progress`, `lib/sleeve` and `fake-data`, which are plain TypeScript that also runs in Node (seed script) and Deno (Edge Functions): relative imports with the `.ts` extension, `import type` for types, no `@/` alias, no enums, no dependencies.

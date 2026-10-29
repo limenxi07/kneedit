@@ -47,7 +47,9 @@
     "providerUnavailable": "这种登录方式尚未设置。请改用电子邮件登录。",
     "noAccount": "找不到这个电子邮件对应的账户。",
     "network": "Kneedit 无法连接网络。请检查网络后再试。",
-    "generic": "出了点问题。请再试一次。"
+    "generic": "出了点问题。请再试一次。",
+    "nudgeRateLimited": "您今天已经送过提醒了。明天可以再送。",
+    "demoOnly": "这只能在演示账户中使用。"
   },
   "sampleData": {
     "tag": "示例数据",
@@ -70,7 +72,16 @@
     },
     "price": "Kneedit Plus 每月 15 新元。Kneedit 护膝一次性付费 29 新元。",
     "prototype": "原型版本，不收取任何费用。",
-    "unlocked": "目前所有 Plus 功能均已开放。"
+    "unlocked": "目前所有 Plus 功能均已开放。",
+    "checkoutTitle": "试用 Plus",
+    "you": "您",
+    "onFree": "目前是免费版",
+    "onPlus": "目前是 Plus",
+    "start": "开始 Plus（原型，不收费）",
+    "stop": "改回免费版",
+    "nothingChanged": "没有变化，因为目前所有 Plus 功能都已开放。",
+    "started": "Plus 已开启。这是原型，不收费。",
+    "stopped": "已改回免费版。"
   },
   "welcome": {
     "title": "欢迎使用 Kneedit",
@@ -219,5 +230,11 @@
       "body": "感谢您使用 Kneedit。",
       "button": "返回欢迎页面"
     }
+  },
+  "visits": {
+    "when": "{{date}} {{time}}",
+    "with": "物理治疗师：{{name}}",
+    "withFormer": "物理治疗师：前任物理治疗师",
+    "completed": "已完成复诊"
   }
 }

@@ -13,6 +13,8 @@ const RPC_ERRORS = {
   confirmation_mismatch: 'confirmationMismatch',
   demo_account: 'demoAccount',
   reauth_required: 'reauthRequired',
+  nudge_rate_limited: 'nudgeRateLimited',
+  demo_only: 'demoOnly',
 } as const;
 
 const AUTH_ERRORS = {
