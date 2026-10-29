@@ -61,7 +61,7 @@ select is(
    from pg_proc p join pg_namespace n on n.oid = p.pronamespace
    where n.nspname = 'public'),
   array[
-    'get_friend_leaderboard', 'list_friendships', 'mock_set_plan', 'redeem_link_code',
+    'delete_my_account', 'get_friend_leaderboard', 'list_friendships', 'mock_set_plan', 'redeem_link_code',
     'regenerate_link_code', 'remove_friend', 'respond_to_friend_request', 'respond_to_link',
     'revoke_link', 'save_prescription', 'send_friend_request'
   ],

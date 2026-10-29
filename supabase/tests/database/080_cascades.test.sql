@@ -1,6 +1,6 @@
--- What deleting an account removes (PLAN.md, Account deletion). The
--- delete_my_account() RPC arrives in Phase 3; these tests delete the auth user
--- directly, which is what it will do.
+-- What deleting an account removes (PLAN.md, Account deletion). These tests
+-- delete the auth user directly, which is what delete_my_account() does
+-- (090_delete_account checks the RPC itself).
 
 begin;
 select * from no_plan();

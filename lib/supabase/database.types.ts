@@ -1064,6 +1064,7 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
+      delete_my_account: { Args: { p_confirmation: string }; Returns: undefined };
       get_friend_leaderboard: {
         Args: Record<PropertyKey, never>;
         Returns: {

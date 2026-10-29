@@ -1,0 +1,24 @@
+{
+  "overview": {
+    "title": "您的家人",
+    "emptyTitle": "还没有连接任何人",
+    "emptyBody": "请向家人索取 Kneedit 个人资料中的连接代码，然后与家人连接。",
+    "streak_one": "连续天数：{{value}} 天",
+    "streak_other": "连续天数：{{value}} 天",
+    "monthSessions_one": "本月锻炼 {{value}} 次",
+    "monthSessions_other": "本月锻炼 {{value}} 次",
+    "noStats": "{{name}} 还没有锻炼记录。",
+    "link": "连接家人",
+    "account": "账户"
+  },
+  "link": {
+    "title": "连接家人",
+    "body": "请向家人索取 6 位连接代码。代码在家人的 Kneedit 个人资料中的家人和物理治疗师下面。"
+  },
+  "pending": {
+    "title": "申请已发出",
+    "body": "需要您的家人批准。家人在 Kneedit 中打开个人资料，然后打开家人和物理治疗师。",
+    "private": "在家人批准之前，您看不到家人的任何信息。",
+    "done": "返回您的家人"
+  }
+}

@@ -1,26 +1,223 @@
 {
   "app": {
     "name": "Kneedit",
-    "tagline": "在家坚持做膝盖运动"
+    "tagline": "在家坚持做膝关节锻炼"
   },
   "language": {
     "label": "语言",
     "en": "English",
     "zh-Hans": "中文"
   },
-  "placeholder": {
-    "title": "欢迎使用 Kneedit",
-    "body": "这是 Kneedit 应用的第一个版本。登录、今日运动、家人报告和物理治疗师面板将在后续阶段推出。",
-    "rolesTitle": "Kneedit 为谁而设",
-    "senior": "您完成物理治疗师为您安排的运动。",
-    "caregiver": "您的家人知道运动已经完成。",
-    "physio": "您的物理治疗师了解两次就诊之间的情况。"
-  },
   "safety": {
-    "stopIfPain": "如果疼痛加剧，请停止运动并联系您的医护人员。"
+    "stopIfPain": "如果疼痛加重，请停止锻炼并联系您的医护人员。"
   },
+  "disclaimer": "Kneedit 不是医疗器械。它不提供医疗建议，也不能取代专业护理。",
   "notFound": {
     "title": "此页面不存在",
-    "back": "返回主页"
+    "back": "返回首页"
+  },
+  "actions": {
+    "back": "返回",
+    "backArrow": "< 返回",
+    "cancel": "取消",
+    "continue": "继续",
+    "tryAgain": "重试",
+    "keep": "保留"
+  },
+  "status": {
+    "loading": "正在加载",
+    "sending": "正在发送",
+    "saving": "正在保存",
+    "signingIn": "正在登录",
+    "deleting": "正在删除"
+  },
+  "errors": {
+    "invalidCode": "这个代码找不到对应的人。请检查后再试。",
+    "ownCode": "这是您自己的代码。请向对方索取对方的代码。",
+    "notFound": "此事项已被回复或移除。",
+    "notAllowed": "您的账户无法执行此操作。",
+    "notASenior": "只有做锻炼的人才能执行此操作。",
+    "demoMixing": "演示账户只能与其他演示账户连接。",
+    "confirmationMismatch": "输入的字不对。请完全按照显示的字输入。",
+    "demoAccount": "演示账户不能在这里删除。",
+    "reauthRequired": "请先重新登录。",
+    "codeExpired": "验证码已过期或不正确。请重新获取。",
+    "tooManyTries": "尝试次数过多。请等一分钟后再试。",
+    "invalidEmail": "请检查电子邮件地址后再试。",
+    "providerUnavailable": "这种登录方式尚未设置。请改用电子邮件登录。",
+    "noAccount": "找不到这个电子邮件对应的账户。",
+    "network": "Kneedit 无法连接网络。请检查网络后再试。",
+    "generic": "出了点问题。请再试一次。"
+  },
+  "sampleData": {
+    "tag": "示例数据",
+    "label": "示例数据：这些数字是为演示编造的。"
+  },
+  "plus": {
+    "badge": "Plus",
+    "badgeLabel": "Kneedit Plus 功能",
+    "badgeHint": "查看 Kneedit Plus 包含的内容",
+    "title": "Kneedit Plus",
+    "body": "Plus 让家人和物理治疗师更全面地了解锻炼的进展。",
+    "includesTitle": "Plus 包括",
+    "includes": {
+      "report": "给家人的每周报告",
+      "falls": "给家人的可能跌倒提醒",
+      "notes": "家人写给物理治疗师的备注",
+      "nudges": "家人发送的温馨提醒",
+      "visits": "家庭日历中的就诊预约",
+      "physio": "给物理治疗师的疼痛和难易回答，以及完整的就诊总结"
+    },
+    "price": "Kneedit Plus 每月 15 新元。Kneedit 护膝一次性付费 29 新元。",
+    "prototype": "原型版本，不收取任何费用。",
+    "unlocked": "目前所有 Plus 功能均已开放。"
+  },
+  "welcome": {
+    "title": "欢迎使用 Kneedit",
+    "signInTitle": "登录",
+    "signInBody": "第一次使用 Kneedit？登录时会同时创建账户。我们会通过电子邮件发送验证码，您无需记住密码。",
+    "emailLabel": "您的电子邮件地址",
+    "sendCode": "通过电子邮件发送登录验证码",
+    "or": "或",
+    "google": "使用 Google 继续"
+  },
+  "verify": {
+    "title": "请查看您的电子邮件",
+    "body": "我们已将 6 位数验证码发送到 {{email}}。请在下面输入，或在这部手机上点击邮件中的链接。",
+    "codeLabel": "6 位数验证码",
+    "signIn": "登录",
+    "resend": "发送新的验证码",
+    "resent": "新的验证码已发出。",
+    "otherEmail": "使用其他电子邮件"
+  },
+  "callback": {
+    "tryCode": "您也可以输入邮件中的 6 位数验证码来登录。",
+    "back": "返回登录"
+  },
+  "onboarding": {
+    "roleTitle": "您会怎样使用 Kneedit？",
+    "role": {
+      "senior": {
+        "title": "我做锻炼",
+        "body": "按照物理治疗师给您的膝关节锻炼来做。"
+      },
+      "caregiver": {
+        "title": "我帮助家人",
+        "body": "了解家人是否完成了锻炼，并为家人加油。"
+      },
+      "physio": {
+        "title": "我是物理治疗师",
+        "body": "了解病人在两次就诊之间的情况。"
+      }
+    },
+    "nameLabel": "您的名字",
+    "senior": {
+      "title": "关于您",
+      "body": "这能让您的家人和物理治疗师知道是您。",
+      "nameHint": "您的家人、朋友和物理治疗师会看到这个名字。",
+      "birthYearLabel": "出生年份",
+      "birthYearHint": "例如 1952",
+      "birthYearInvalid": "请检查年份。",
+      "genderLabel": "性别",
+      "reminderLabel": "每日提醒",
+      "suggested": "{{time}}（建议）",
+      "reminderHint": "您以后可以在个人资料中更改。"
+    },
+    "member": {
+      "title": {
+        "caregiver": "我们怎么称呼您？",
+        "physio": "病人怎么称呼您？"
+      },
+      "nameHint": {
+        "caregiver": "您申请连接时，您的家人会看到这个名字。",
+        "physio": "您申请连接时，病人会看到这个名字。"
+      }
+    }
+  },
+  "gender": {
+    "female": "女",
+    "male": "男",
+    "prefer_not_to_say": "不愿透露"
+  },
+  "linkCode": {
+    "fieldLabel": "对方的连接代码",
+    "fieldHint": "6 个字母和数字，在对方的 Kneedit 个人资料中",
+    "send": "发送申请",
+    "spelled": "代码：{{code}}"
+  },
+  "scan": {
+    "start": "扫描对方的二维码",
+    "instructions": "将相机对准对方 Kneedit 个人资料中的二维码。",
+    "cameraLabel": "相机，正在寻找二维码",
+    "permission": "Kneedit 需要使用相机来扫描二维码，不会拍照。",
+    "permissionDenied": "Kneedit 的相机权限已关闭。您可以改为输入代码，或在手机设置中允许使用相机。",
+    "allowCamera": "允许使用相机",
+    "typeInstead": "改为输入代码"
+  },
+  "roles": {
+    "switchTitle": "使用 Kneedit 的其他方式",
+    "open": {
+      "senior": "前往我的锻炼",
+      "caregiver": "前往我的家人",
+      "physio": "前往我的病人"
+    },
+    "add": {
+      "caregiver": "帮助家人",
+      "senior": "我自己也做锻炼"
+    }
+  },
+  "account": {
+    "title": "账户",
+    "signOut": "退出登录",
+    "delete": "删除账户",
+    "deleteHint": "在执行任何操作之前，先说明会删除什么"
+  },
+  "pendingRequest": {
+    "title": "等待批准",
+    "sent": "申请已于 {{date}} 发出。对方批准后，您会看到对方的名字。",
+    "cancel": "取消申请",
+    "cancelConfirm": "取消这个申请？您以后可以再发送新的申请。"
+  },
+  "deleteAccount": {
+    "title": "删除您的账户",
+    "demo": "这是演示账户。演示数据由种子脚本重置，所以不能在这里删除。",
+    "permanent": "删除账户是永久的，无法撤销。",
+    "profile": "您的名字、电子邮件和登录信息都会被删除，并且您会被退出登录。",
+    "senior": {
+      "title": "您的锻炼",
+      "history": "您的锻炼记录、回答、报告、就诊和锻炼计划都会被删除。",
+      "links": "您的连接、朋友和代码都会被删除。",
+      "loseAccess": "以下人员会立即失去访问权限：",
+      "member": {
+        "caregiver": "{{name}}，家人",
+        "physio": "{{name}}，物理治疗师"
+      }
+    },
+    "caregiver": {
+      "title": "您与家人的连接",
+      "links": "您与家人的连接会立即结束。",
+      "notes": "您写的备注会保留在家人的记录中，显示为来自前照护者。"
+    },
+    "physio": {
+      "title": "您的病人",
+      "links": "您与病人的连接会立即结束。",
+      "records": "您制定的锻炼计划、就诊和就诊总结会保留在病人的记录中，显示为来自前物理治疗师。"
+    },
+    "reauth": {
+      "title": "请重新登录",
+      "body": "为了保护您的账户，删除前需要重新登录。我们会把验证码发送到 {{email}}。",
+      "send": "通过电子邮件发送验证码"
+    },
+    "confirm": {
+      "title": "您确定吗？",
+      "body": "要删除您的账户，请在下面输入 {{word}}。",
+      "fieldLabel": "输入 {{word}}",
+      "button": "删除我的账户"
+    },
+    "done": {
+      "title": "您的账户已删除",
+      "body": "感谢您使用 Kneedit。",
+      "button": "返回欢迎页面"
+    }
   }
 }

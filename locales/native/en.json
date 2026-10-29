@@ -1,0 +1,5 @@
+{
+  "ios": {
+    "NSCameraUsageDescription": "Kneedit uses the camera to scan a family member's QR code. It takes no photos."
+  }
+}

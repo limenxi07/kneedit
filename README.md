@@ -47,6 +47,20 @@ npm run db:stop
 
 To seed the hosted project instead, put `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` in `.env.seed.local` (gitignored). The script only ever deletes accounts marked as demo.
 
+## Signing in
+
+Sign-in is by email: Kneedit emails a 6-digit code that also comes with a magic link. New accounts are created on first sign-in, then onboarding asks how the person will use Kneedit.
+
+Locally, the email lands in Mailpit at http://localhost:54324. Put the local API URL and anon key from `npm run db:start` in `.env`, run `npm run web`, and sign in with any `@kneedit.test` address, or a demo account after `npm run seed:demo`.
+
+For the hosted project, in the Supabase dashboard:
+
+- **Authentication, URL Configuration:** set the site URL to `https://kneedit.vercel.app` and allow the redirect URLs listed in `supabase/config.toml` (`kneedit://**`, `exp://**`, `https://kneedit.vercel.app/**`, `https://*.vercel.app/**`).
+- **Authentication, Emails:** use `supabase/templates/sign-in.html` for both the Magic Link and Confirm signup templates, so the email carries the code.
+- **Google** (optional): enable the Google provider with an OAuth client. Locally it is off; `supabase/config.toml` explains how to turn it on.
+
+Vercel needs `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY` in its environment variables, or the app throws at start-up (the browser console says which variable is missing).
+
 ## Chinese strings awaiting review
 
 Every Simplified Chinese string is machine-drafted until a native speaker reviews it. The list, with safety and health wording first, is printed by:

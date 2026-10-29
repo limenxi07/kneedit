@@ -1,0 +1,24 @@
+{
+  "overview": {
+    "title": "Your family",
+    "emptyTitle": "Nobody linked yet",
+    "emptyBody": "Ask your family member for the link code in their Kneedit Profile, then link to them.",
+    "streak_one": "Streak: {{value}} day",
+    "streak_other": "Streak: {{value}} days",
+    "monthSessions_one": "{{value}} session this month",
+    "monthSessions_other": "{{value}} sessions this month",
+    "noStats": "No exercises recorded for {{name}} yet.",
+    "link": "Link a family member",
+    "account": "Account"
+  },
+  "link": {
+    "title": "Link a family member",
+    "body": "Ask your family member for the 6-character code in their Kneedit Profile, under Family and physiotherapist."
+  },
+  "pending": {
+    "title": "Request sent",
+    "body": "Your family member needs to approve it. In Kneedit, they open Profile, then Family and physiotherapist.",
+    "private": "Until they approve, you see nothing about them.",
+    "done": "Back to your family"
+  }
+}

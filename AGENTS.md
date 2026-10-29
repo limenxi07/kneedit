@@ -60,6 +60,7 @@ app/                     routes only (every file here is a screen)
   (physio)/              physio dashboard (desktop layout)
 components/ui/           shared building blocks: Text, Button, Card, Screen ...
 components/<role>/       components used by one role
+components/shared/       feature components used by more than one role (guards, link codes, account)
 lib/                     non-UI code: i18n, theme, supabase, progress rules, sleeve sources
 locales/<lang>/*.json    UI strings, one file per namespace
 locales/review-status.json   review status of every Chinese string
@@ -71,6 +72,8 @@ types/                   global type declarations
 ```
 
 - Never put non-route code inside `app/`.
+- Route groups don't appear in URLs, so every route path is unique across groups: senior tabs are `/today`, `/friends`, `/sleeve`, `/profile`; caregiver home is `/overview`; physio home is `/patients`. Screens open to more than one role (`/account`, `/link-senior`, `/delete-account`, `/plus`) sit at the top of `app/`.
+- Guard screens with `components/shared/Guards` (`RequireSignedIn`, `RequireRole`). Guards only decide navigation; RLS decides what anyone can read.
 - Import with the `@/` alias (`@/components/ui/Text`, `@/lib/i18n`).
 - Except in `lib/progress`, `lib/sleeve` and `fake-data`, which are plain TypeScript that also runs in Node (seed script) and Deno (Edge Functions): relative imports with the `.ts` extension, `import type` for types, no `@/` alias, no enums, no dependencies.
 
