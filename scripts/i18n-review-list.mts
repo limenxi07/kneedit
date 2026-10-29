@@ -7,14 +7,18 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+import { seedStrings } from './seed-strings.ts';
+
 type Entry = { status: 'machine-drafted' | 'reviewed'; priority: 'safety' | 'health' | 'general' };
 
 const root = path.resolve(import.meta.dirname, '..');
 const review = JSON.parse(
   fs.readFileSync(path.join(root, 'locales/review-status.json'), 'utf8'),
-) as { strings: Record<string, Entry> };
+) as { strings: Record<string, Entry>; data: Record<string, Entry> };
+const seedZh = seedStrings(root, 'zh-Hans');
 
 function lookup(id: string): string {
+  if (id in seedZh) return seedZh[id]!;
   const [ns, key] = id.split(':') as [string, string];
   const file = path.join(root, 'locales/zh-Hans', `${ns}.json`);
   let value: unknown = JSON.parse(fs.readFileSync(file, 'utf8'));
@@ -23,7 +27,9 @@ function lookup(id: string): string {
 }
 
 const order = ['safety', 'health', 'general'] as const;
-const pending = Object.entries(review.strings).filter(([, e]) => e.status !== 'reviewed');
+const pending = Object.entries({ ...review.strings, ...review.data }).filter(
+  ([, e]) => e.status !== 'reviewed',
+);
 
 console.log(`${pending.length} Chinese strings awaiting review.\n`);
 for (const priority of order) {

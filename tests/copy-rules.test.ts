@@ -1,6 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+import { seedStrings } from '@/scripts/seed-strings';
+
 import { ROOT, loadStrings } from './helpers/locales';
 
 /**
@@ -28,8 +30,9 @@ const BANNED_ZH = [/预防/, /防止/, /临床级/, /诊断/, /实时/, /治疗(
 const GENDERED_EN = /\b(he|she|him|her|his|hers|himself|herself)\b/i;
 const GENDERED_ZH = /她|(?<!其)他(?!们)/;
 
-const en = loadStrings('en');
-const zh = loadStrings('zh-Hans');
+// UI strings plus the exercise library and tags in supabase/seed.sql.
+const en = { ...loadStrings('en'), ...seedStrings(ROOT, 'en') };
+const zh = { ...loadStrings('zh-Hans'), ...seedStrings(ROOT, 'zh-Hans') };
 
 const offending = (strings: Record<string, unknown>, pattern: RegExp) =>
   Object.entries(strings)
@@ -55,16 +58,18 @@ describe('copy rules', () => {
     expect(offending(zh, GENDERED_ZH)).toEqual([]);
   });
 
-  it('no em dash or middle dot in app source either', () => {
+  it('no em dash or middle dot in source, SQL or fake data either', () => {
     const files: string[] = [];
     const walk = (dir: string) => {
       for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
         const full = path.join(dir, entry.name);
         if (entry.isDirectory()) walk(full);
-        else if (/\.(tsx?|json)$/.test(entry.name)) files.push(full);
+        else if (/\.(m?tsx?|json|sql)$/.test(entry.name)) files.push(full);
       }
     };
-    for (const dir of ['app', 'components', 'lib', 'locales']) walk(path.join(ROOT, dir));
+    for (const dir of ['app', 'components', 'lib', 'locales', 'fake-data', 'scripts', 'supabase']) {
+      walk(path.join(ROOT, dir));
+    }
     const bad = files.filter((f) => FORBIDDEN_CHARACTERS.test(fs.readFileSync(f, 'utf8')));
     expect(bad.map((f) => path.relative(ROOT, f))).toEqual([]);
   });
