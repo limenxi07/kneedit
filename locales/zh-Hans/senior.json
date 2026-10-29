@@ -11,12 +11,47 @@
     "linkRequests_other": "有 {{count}} 人想加入您的照护团队。",
     "review": "查看申请",
     "planTitle": "今天的锻炼",
-    "planSoon": "您今天的锻炼计划会显示在这里。"
+    "restTitle": "休息日",
+    "restBody": "今天没有锻炼。好好休息，明天见。",
+    "sessionsDone": "今天已完成 {{done}} 次，共 {{slots}} 次",
+    "allDoneTitle": "今天的锻炼都完成了，做得好！",
+    "allDoneBody": "您今天的锻炼已经完成。",
+    "item_one": "{{name}}，{{reps}} 次",
+    "item_other": "{{name}}，{{reps}} 次",
+    "start": "开始锻炼",
+    "continue": "继续锻炼",
+    "again": "再做一次",
+    "againHint": "额外的锻炼会保存，但只有计划要求的次数才计入。",
+    "formTitle": "动作评分",
+    "formScore": "最近一次动作评分：{{score}} 分（满分 10 分）",
+    "visitTitle": "下次复诊",
+    "nudge": "{{name}} 给您送来一个温馨提醒。加油！",
+    "nudgeFormer": "您的家人给您送来一个温馨提醒。加油！",
+    "nudgeThanks": "谢谢",
+    "reminderOffer": "每天 {{time}} 在这部手机上提醒您。"
   },
   "sleeve": {
     "title": "护膝",
     "noneTitle": "未连接护膝",
-    "noneBody": "有了 Kneedit 护膝后，它会显示在这里。目前，您每做完一个锻炼就点击完成。"
+    "noneBody": "有了 Kneedit 护膝后，它会显示在这里。目前，您每做完一个锻炼就点击完成。",
+    "sampleIntro": "这是示例数据，用来展示护膝会测量什么。不是来自您的膝盖。",
+    "knee": {
+      "left": "戴在左膝的护膝",
+      "right": "戴在右膝的护膝",
+      "both": "戴在双膝的护膝"
+    },
+    "battery": "电量：{{value}}",
+    "worn": "正在佩戴",
+    "notWorn": "未佩戴",
+    "lastSync": "上次同步：{{time}}",
+    "angleTitle": "膝盖弯曲",
+    "angle": "{{value}} 度",
+    "waiting": "等待护膝数据",
+    "angleBody": "腿伸直时是 0 度。曲线显示最近几秒。",
+    "heartRate": "心率：每分钟 {{value}} 次",
+    "todayTitle": "今天到现在",
+    "steps": "{{value}} 步",
+    "walking": "步行 {{value}} 分钟"
   },
   "friends": {
     "title": "朋友",
@@ -84,6 +119,121 @@
     "leaderboardBody": "朋友能看到您的连续天数和本周进度。",
     "peopleTitle": "联系人",
     "linkedPeople": "家人和物理治疗师",
-    "friends": "朋友"
+    "friends": "朋友",
+    "exercisesTitle": "您的锻炼",
+    "reminderAt": "每日提醒时间：{{time}}",
+    "programme": "您的锻炼计划",
+    "reminder": "每日提醒",
+    "visits": "您的复诊"
+  },
+  "progress": {
+    "weekTitle": "本周",
+    "week": "完成 {{done}} 次，共 {{prescribed}} 次，{{rate}}",
+    "weekBar": "本周锻炼完成情况",
+    "streak_one": "连续 {{value}} 天",
+    "streak_other": "连续 {{value}} 天",
+    "rank": "在朋友排行榜中排第 {{rank}} 名，共 {{total}} 人"
+  },
+  "session": {
+    "title": "今天的锻炼",
+    "extraTitle": "额外锻炼",
+    "extraBody": "您已完成今天的锻炼。这次会保存，但不计入本周。",
+    "overview_one": "这次有 {{value}} 个动作。",
+    "overview_other": "共 {{value}} 个动作，请按顺序做。",
+    "numbered": "{{number}}. {{name}}",
+    "reps_one": "做 {{value}} 次",
+    "reps_other": "做 {{value}} 次",
+    "doneMark": "已完成",
+    "start": "开始",
+    "progress": "第 {{number}} 个动作，共 {{total}} 个",
+    "stepsTitle": "怎么做",
+    "step": "{{number}}. {{text}}",
+    "onBreak": "您正在休息。慢慢来，准备好了就点继续。",
+    "resume": "继续",
+    "done": "完成",
+    "doneHint": "保存这个动作，然后问您两个问题",
+    "takeBreak": "休息一下",
+    "endEarly": "提前结束",
+    "endEarlyHint": "会先问您。已完成的动作会保存。",
+    "endEarlyConfirm": "现在结束这次锻炼吗？已完成的动作会保存，但这次不计入本周。",
+    "keepGoing": "继续做",
+    "endEarlyYes": "结束锻炼",
+    "noVideo": "这个动作还没有视频。请按照下面的步骤做。",
+    "videoUnavailable": "视频现在无法播放。请按照下面的步骤做。",
+    "videoLabel": "{{name}} 的示范视频",
+    "formNeedsSleeve": "动作评分需要护膝"
+  },
+  "questions": {
+    "title": "{{name}} 做得怎么样？",
+    "hurt": "会痛吗？",
+    "easy": "容易吗？",
+    "yes": "是",
+    "no": "否",
+    "next": "下一步",
+    "finish": "完成锻炼",
+    "answerBoth": "请先回答两个问题"
+  },
+  "done": {
+    "title": {
+      "counted": "做得好！",
+      "extra": "额外锻炼已保存",
+      "ended": "锻炼已提前结束"
+    },
+    "body": {
+      "counted": "这次锻炼计入本周。",
+      "extra": "您已完成今天的锻炼，所以这次不计入本周。",
+      "ended": "已完成的动作已保存。只有完成的锻炼才计入本周。"
+    },
+    "hurt": "会痛吗？{{answer}}",
+    "easy": "容易吗？{{answer}}",
+    "notAnswered": "未回答",
+    "backToToday": "回到今天"
+  },
+  "leaderboard": {
+    "title": "本周排行榜",
+    "rule": "按本周完成的百分比排名。相同时，连续天数较长的排前面。",
+    "resets": "每周一重新开始。",
+    "rowLabel": "第 {{rank}} 名，{{name}}，本周 {{rate}}，{{streak}}",
+    "you": "{{name}}（您）",
+    "rank": "{{rank}}. {{name}}",
+    "stats": "本周 {{rate}}。{{streak}}",
+    "empty": "加朋友，看看本周谁坚持得好。"
+  },
+  "programme": {
+    "title": "您的锻炼计划",
+    "starter": "Kneedit 入门锻炼",
+    "draft": "草稿，等待临床人员审核。您的物理治疗师可以修改。",
+    "fromPhysio": "来自您的物理治疗师",
+    "since": "从 {{date}} 开始使用",
+    "upcoming": "新的计划从 {{date}} 开始",
+    "askPhysio": "只有您的物理治疗师可以修改计划。下次复诊时可以问问。",
+    "rest": "休息日",
+    "itemDetail": "{{reps}}，{{frequency}}",
+    "frequency": {
+      "daily": "每天",
+      "twice_daily": "每天两次",
+      "alternate_days": "隔天一次"
+    }
+  },
+  "visits": {
+    "title": "您的复诊",
+    "intro": "和物理治疗师的复诊，由物理治疗师安排。",
+    "upcomingTitle": "即将到来",
+    "noneUpcoming": "还没有安排复诊。",
+    "pastTitle": "以前的复诊",
+    "when": "{{date}} {{time}}",
+    "with": "物理治疗师：{{name}}",
+    "withFormer": "物理治疗师：前任物理治疗师",
+    "completed": "已完成复诊"
+  },
+  "reminder": {
+    "title": "每日提醒",
+    "timeLabel": "提醒时间",
+    "webOnly": "提醒会显示在手机上。请在手机上打开 Kneedit 来开启提醒。",
+    "on": "这部手机的提醒已开启，每天 {{time}}。",
+    "off": "这部手机的提醒已关闭。",
+    "denied": "Kneedit 的通知已关闭。您可以在手机设置里允许通知。",
+    "turnOn": "开启提醒",
+    "turnOff": "关闭提醒"
   }
 }

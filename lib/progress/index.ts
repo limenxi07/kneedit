@@ -5,6 +5,7 @@
 export * from './counting.ts';
 export * from './dates.ts';
 export * from './leaderboard.ts';
+export * from './rows.ts';
 export * from './schedule.ts';
 export * from './stats.ts';
 export * from './visitSummary.ts';

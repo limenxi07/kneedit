@@ -20,7 +20,10 @@
     "db:reset": "supabase db reset",
     "db:test": "supabase test db",
     "db:types": "supabase gen types typescript --local --schema public > lib/supabase/database.types.ts && prettier --write lib/supabase/database.types.ts",
-    "seed:demo": "node --env-file-if-exists=.env.seed.local --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/seed-demo.mts"
+    "seed:demo": "node --env-file-if-exists=.env.seed.local --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/seed-demo.mts",
+    "functions:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/check-functions.mts",
+    "functions:deploy": "supabase functions deploy",
+    "media:upload": "node --env-file-if-exists=.env.seed.local --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/upload-media.mts"
   },
   "dependencies": {
     "@expo-google-fonts/figtree": "^0.4.1",
@@ -37,10 +40,12 @@
     "expo-image": "~57.0.5",
     "expo-linking": "~57.0.13",
     "expo-localization": "~57.0.2",
+    "expo-notifications": "~57.0.23",
     "expo-router": "~57.0.29",
     "expo-splash-screen": "~57.0.10",
     "expo-status-bar": "~57.0.1",
     "expo-system-ui": "~57.0.4",
+    "expo-video": "~57.0.5",
     "expo-web-browser": "~57.0.3",
     "i18next": "^26.5.4",
     "nativewind": "^4.2.7",

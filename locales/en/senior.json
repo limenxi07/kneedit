@@ -11,12 +11,47 @@
     "linkRequests_other": "{{count}} people want to join your care team.",
     "review": "Review requests",
     "planTitle": "Today's exercises",
-    "planSoon": "Your exercise plan for today will show here."
+    "restTitle": "Rest day",
+    "restBody": "No exercises today. Rest well, and see you tomorrow.",
+    "sessionsDone": "{{done}} of {{slots}} sessions done today",
+    "allDoneTitle": "All done for today. Well done!",
+    "allDoneBody": "Your exercises for today are finished.",
+    "item_one": "{{name}}, {{reps}} time",
+    "item_other": "{{name}}, {{reps}} times",
+    "start": "Start exercises",
+    "continue": "Continue exercises",
+    "again": "Do them again",
+    "againHint": "An extra session is saved, but only the sessions your plan asks for count.",
+    "formTitle": "Form score",
+    "formScore": "Last form score: {{score}} out of 10",
+    "visitTitle": "Next visit",
+    "nudge": "{{name}} sent you a gentle nudge. You can do it!",
+    "nudgeFormer": "Your family sent you a gentle nudge. You can do it!",
+    "nudgeThanks": "Thank you",
+    "reminderOffer": "Get a reminder on this phone every day at {{time}}."
   },
   "sleeve": {
     "title": "Sleeve",
     "noneTitle": "No sleeve connected",
-    "noneBody": "When you have a Kneedit sleeve, it shows here. For now, you tap Done after each exercise."
+    "noneBody": "When you have a Kneedit sleeve, it shows here. For now, you tap Done after each exercise.",
+    "sampleIntro": "This is sample data, to show what the sleeve will measure. It is not from your knee.",
+    "knee": {
+      "left": "Sleeve on the left knee",
+      "right": "Sleeve on the right knee",
+      "both": "Sleeves on both knees"
+    },
+    "battery": "Battery: {{value}}",
+    "worn": "Being worn now",
+    "notWorn": "Not being worn",
+    "lastSync": "Last synced at {{time}}",
+    "angleTitle": "Knee bend",
+    "angle": "{{value}} degrees",
+    "waiting": "Waiting for the sleeve",
+    "angleBody": "A straight leg is 0 degrees. The line shows the last few seconds.",
+    "heartRate": "Heart rate: {{value}} beats a minute",
+    "todayTitle": "Today so far",
+    "steps": "{{value}} steps",
+    "walking": "{{value}} minutes of walking"
   },
   "friends": {
     "title": "Friends",
@@ -84,6 +119,121 @@
     "leaderboardBody": "Friends see your streak and this week's progress.",
     "peopleTitle": "People",
     "linkedPeople": "Family and physiotherapist",
-    "friends": "Friends"
+    "friends": "Friends",
+    "exercisesTitle": "Your exercises",
+    "reminderAt": "Daily reminder at {{time}}",
+    "programme": "Your programme",
+    "reminder": "Daily reminder",
+    "visits": "Your visits"
+  },
+  "progress": {
+    "weekTitle": "This week",
+    "week": "{{done}} of {{prescribed}} sessions, {{rate}}",
+    "weekBar": "This week's sessions done",
+    "streak_one": "Streak: {{value}} day",
+    "streak_other": "Streak: {{value}} days",
+    "rank": "Number {{rank}} of {{total}} on your friends' leaderboard"
+  },
+  "session": {
+    "title": "Today's session",
+    "extraTitle": "Extra session",
+    "extraBody": "You've done today's sessions. This one is saved, but it won't count towards your week.",
+    "overview_one": "{{value}} exercise in this session.",
+    "overview_other": "{{value}} exercises, in this order.",
+    "numbered": "{{number}}. {{name}}",
+    "reps_one": "Do it {{value}} time",
+    "reps_other": "Do it {{value}} times",
+    "doneMark": "Done",
+    "start": "Start",
+    "progress": "Exercise {{number}} of {{total}}",
+    "stepsTitle": "How to do it",
+    "step": "{{number}}. {{text}}",
+    "onBreak": "You're on a break. Take your time, and tap Resume when you're ready.",
+    "resume": "Resume",
+    "done": "Done",
+    "doneHint": "Saves this exercise, then asks two questions",
+    "takeBreak": "Take a break",
+    "endEarly": "End session early",
+    "endEarlyHint": "Asks first. The exercises you finished are saved.",
+    "endEarlyConfirm": "End the session now? The exercises you finished are saved, but the session won't count towards your week.",
+    "keepGoing": "Keep going",
+    "endEarlyYes": "End session",
+    "noVideo": "There is no video for this exercise yet. Follow the steps below.",
+    "videoUnavailable": "The video can't play right now. Follow the steps below.",
+    "videoLabel": "Video showing {{name}}",
+    "formNeedsSleeve": "Form score needs the sleeve"
+  },
+  "questions": {
+    "title": "How was {{name}}?",
+    "hurt": "Did it hurt?",
+    "easy": "Was it easy?",
+    "yes": "Yes",
+    "no": "No",
+    "next": "Next",
+    "finish": "Finish session",
+    "answerBoth": "Answer both questions first"
+  },
+  "done": {
+    "title": {
+      "counted": "Well done!",
+      "extra": "Extra session saved",
+      "ended": "Session ended early"
+    },
+    "body": {
+      "counted": "This session counts towards your week.",
+      "extra": "You had already done today's sessions, so this one doesn't count towards your week.",
+      "ended": "The exercises you finished are saved. Only finished sessions count towards your week."
+    },
+    "hurt": "Did it hurt? {{answer}}",
+    "easy": "Was it easy? {{answer}}",
+    "notAnswered": "Not answered",
+    "backToToday": "Back to Today"
+  },
+  "leaderboard": {
+    "title": "This week's leaderboard",
+    "rule": "Ranked by this week's sessions done, as a percentage. A tie goes to the longer streak.",
+    "resets": "Resets every Monday.",
+    "rowLabel": "Number {{rank}}, {{name}}, {{rate}} this week, {{streak}}",
+    "you": "{{name}} (you)",
+    "rank": "{{rank}}. {{name}}",
+    "stats": "{{rate}} this week. {{streak}}",
+    "empty": "Add friends to see who is keeping up this week."
+  },
+  "programme": {
+    "title": "Your programme",
+    "starter": "Kneedit starter routine",
+    "draft": "Draft, pending clinician sign-off. Your physiotherapist can change it.",
+    "fromPhysio": "From your physiotherapist",
+    "since": "In use since {{date}}",
+    "upcoming": "New programme from {{date}}",
+    "askPhysio": "Only your physiotherapist can change your programme. Ask them at your next visit.",
+    "rest": "Rest day",
+    "itemDetail": "{{reps}}, {{frequency}}",
+    "frequency": {
+      "daily": "every day",
+      "twice_daily": "twice a day",
+      "alternate_days": "every other day"
+    }
+  },
+  "visits": {
+    "title": "Your visits",
+    "intro": "Visits with your physiotherapist. Your physiotherapist books them.",
+    "upcomingTitle": "Coming up",
+    "noneUpcoming": "No visits booked.",
+    "pastTitle": "Past visits",
+    "when": "{{date}}, {{time}}",
+    "with": "With {{name}}",
+    "withFormer": "With a former physiotherapist",
+    "completed": "Visit done"
+  },
+  "reminder": {
+    "title": "Daily reminder",
+    "timeLabel": "Remind me at",
+    "webOnly": "Reminders show on your phone. Open Kneedit on your phone to turn them on.",
+    "on": "The reminder is on for this phone, every day at {{time}}.",
+    "off": "The reminder is off on this phone.",
+    "denied": "Notifications are off for Kneedit. You can allow them in your phone's settings.",
+    "turnOn": "Turn on the reminder",
+    "turnOff": "Turn off the reminder"
   }
 }
