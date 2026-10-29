@@ -25,3 +25,23 @@ jobs:
       - run: npm run typecheck
       - run: npm test -- --ci
       - run: npm run build:web
+
+  database:
+    name: Database (pgTAP, lint, generated types)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Only what the tests need: Postgres, auth, storage, the API and postgres-meta.
+      - run: npx supabase start -x studio,imgproxy,edge-runtime,logflare,vector,realtime,mailpit,supavisor
+      - run: npx supabase db lint --level warning --fail-on warning
+      - run: npm run db:test
+      - name: Generated types match the migrations
+        run: npm run db:types && git diff --exit-code lib/supabase/database.types.ts
+      - name: Demo seed runs
+        run: npm run seed:demo
