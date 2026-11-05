@@ -90,7 +90,8 @@
     "emailLabel": "Your email address",
     "sendCode": "Email me a sign-in code",
     "or": "or",
-    "google": "Continue with Google"
+    "google": "Continue with Google",
+    "linkPending": "You scanned a family member's Kneedit code. Sign in first, then you can ask to link to them."
   },
   "verify": {
     "title": "Check your email",

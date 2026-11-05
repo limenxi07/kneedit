@@ -349,7 +349,7 @@ interface ExerciseTracker {
    - Monday job: archive `leaderboard_weeks`, then generate `weekly_reports` and send "weekly report ready" to Plus caregivers who have the report on.
    - **Caregivers on the web** (see Web in Architecture):
      - `LinkCodeCard` encodes the QR as `<site>/link-senior?code=<code>`, using the production URL in native builds and the current origin on web, so a preview deploy's QR opens that preview.
-     - A signed-out visitor to `/link-senior?code=...` keeps the code through sign-in and onboarding, then lands back on the prefilled form. Today `RequireSignedIn` sends them to `/welcome` and the code is lost.
+     - A signed-out visitor to `/link-senior?code=...` keeps the code through sign-in and onboarding, then lands back on the prefilled form (`lib/linking/pendingLinkCode.ts`, forgotten after a day). The welcome screen says why they are signing in.
      - A web manifest (name, icons, theme colour, `display: standalone`) for Add to Home Screen.
      - Test: scan a QR of the Vercel preview URL on iPhone Safari and Android Chrome, sign in as the demo caregiver, link by QR, and walk every caregiver screen in both languages.
 8. **Polish:**

@@ -61,6 +61,7 @@
     "common:welcome.sendCode": { "status": "machine-drafted", "priority": "general" },
     "common:welcome.or": { "status": "machine-drafted", "priority": "general" },
     "common:welcome.google": { "status": "machine-drafted", "priority": "general" },
+    "common:welcome.linkPending": { "status": "machine-drafted", "priority": "general" },
     "common:verify.title": { "status": "machine-drafted", "priority": "general" },
     "common:verify.body": { "status": "machine-drafted", "priority": "general" },
     "common:verify.codeLabel": { "status": "machine-drafted", "priority": "general" },

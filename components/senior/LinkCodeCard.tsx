@@ -9,6 +9,7 @@ import { Loading } from '@/components/ui/Loading';
 import { Notice } from '@/components/ui/Notice';
 import { Text } from '@/components/ui/Text';
 import { formatCode } from '@/lib/linking/code';
+import { linkUrl } from '@/lib/linking/linkUrl';
 import { useLinkCode, useRegenerateLinkCode } from '@/lib/queries/links';
 import { errorKey } from '@/lib/supabase/errors';
 import { colors } from '@/lib/theme/tokens';
@@ -16,7 +17,8 @@ import { colors } from '@/lib/theme/tokens';
 /**
  * The senior's link code, as text and as a QR code. Family and the
  * physiotherapist enter it to ask to join; nothing is shared until the
- * senior approves.
+ * senior approves. The QR is a link to the website, so family can scan it
+ * with any phone camera, without installing the app.
  */
 export function LinkCodeCard() {
   const { t } = useTranslation(['senior', 'common']);
@@ -49,7 +51,7 @@ export function LinkCodeCard() {
             className="items-center self-center rounded-2xl bg-white p-4"
           >
             <QRCode
-              value={code.data}
+              value={linkUrl(code.data)}
               size={200}
               color={colors.ink}
               backgroundColor={colors.white}

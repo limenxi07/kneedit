@@ -90,7 +90,8 @@
     "emailLabel": "您的电子邮件地址",
     "sendCode": "通过电子邮件发送登录验证码",
     "or": "或",
-    "google": "使用 Google 继续"
+    "google": "使用 Google 继续",
+    "linkPending": "您扫描了家人的 Kneedit 二维码。请先登录，然后就可以申请与对方关联。"
   },
   "verify": {
     "title": "请查看您的电子邮件",

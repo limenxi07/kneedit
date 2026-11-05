@@ -11,6 +11,7 @@ import { TextField } from '@/components/ui/TextField';
 import { HOME } from '@/lib/auth/roles';
 import { useAuth } from '@/lib/auth/useAuth';
 import { useLanguage } from '@/lib/i18n/useLanguage';
+import { readPendingLinkCode } from '@/lib/linking/pendingLinkCode';
 import { useSetUpMember } from '@/lib/queries/account';
 import { useMe } from '@/lib/queries/me';
 import { errorKey } from '@/lib/supabase/errors';
@@ -32,7 +33,13 @@ export default function MemberSetup() {
       {
         onSuccess: async () => {
           await setPreferredRole(role);
-          router.replace(role === 'caregiver' ? '/link-senior' : HOME.physio);
+          if (role === 'physio') {
+            router.replace(HOME.physio);
+            return;
+          }
+          // A code from a scanned QR, if this caregiver arrived that way.
+          const code = await readPendingLinkCode();
+          router.replace({ pathname: '/link-senior', params: code ? { code } : {} });
         },
       },
     );

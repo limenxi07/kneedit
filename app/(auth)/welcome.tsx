@@ -13,6 +13,7 @@ import { Text } from '@/components/ui/Text';
 import { TextField } from '@/components/ui/TextField';
 import { sendSignInCode, signInWithGoogle } from '@/lib/auth/signIn';
 import { useLanguage } from '@/lib/i18n/useLanguage';
+import { usePendingLinkCode } from '@/lib/linking/usePendingLinkCode';
 import { errorKey } from '@/lib/supabase/errors';
 
 const looksLikeEmail = (s: string) => /^\S+@\S+\.\S+$/.test(s.trim());
@@ -32,6 +33,7 @@ function WelcomeForm() {
   const [email, setEmail] = useState('');
   const [busy, setBusy] = useState<'email' | 'google' | null>(null);
   const [error, setError] = useState<unknown>(null);
+  const pendingCode = usePendingLinkCode();
 
   const sendCode = async () => {
     setBusy('email');
@@ -62,6 +64,7 @@ function WelcomeForm() {
     <Screen>
       <Text variant="title">{t('welcome.title')}</Text>
       <Text>{t('app.tagline')}</Text>
+      {pendingCode ? <Notice>{t('welcome.linkPending')}</Notice> : null}
 
       <LanguageSwitch />
 

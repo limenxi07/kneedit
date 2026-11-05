@@ -3,6 +3,19 @@ import path from 'node:path';
 
 import { CONFIRMATION_WORD, matchesConfirmation } from '@/lib/account/deletion';
 import { codeFromScan, formatCode, isCompleteCode, normalizeCode } from '@/lib/linking/code';
+import { linkUrl, SITE_URL } from '@/lib/linking/linkUrl';
+import {
+  clearPendingLinkCode,
+  decodePending,
+  encodePending,
+  PENDING_MAX_AGE_MS,
+  readPendingLinkCode,
+  savePendingLinkCode,
+} from '@/lib/linking/pendingLinkCode';
+
+jest.mock('@react-native-async-storage/async-storage', () =>
+  require('@react-native-async-storage/async-storage/jest/async-storage-mock'),
+);
 
 describe('link and friend codes', () => {
   it('accept spaces, dashes and lower case, as people type them', () => {
@@ -24,6 +37,56 @@ describe('link and friend codes', () => {
 
   it('show a code in two groups of three', () => {
     expect(formatCode('abc234')).toBe('ABC 234');
+  });
+});
+
+describe('the link QR', () => {
+  it('opens the "Link a family member" screen on the site, with the code', () => {
+    expect(linkUrl('abc 234', 'https://kneedit.vercel.app')).toBe(
+      'https://kneedit.vercel.app/link-senior?code=ABC234',
+    );
+    expect(linkUrl('ABC234', 'https://kneedit-git-pr-7.vercel.app/')).toBe(
+      'https://kneedit-git-pr-7.vercel.app/link-senior?code=ABC234',
+    );
+  });
+
+  it('defaults to the production site off the web', () => {
+    expect(linkUrl('ABC234')).toBe(`${SITE_URL}/link-senior?code=ABC234`);
+  });
+
+  it('can be read back by the in-app scanner', () => {
+    expect(codeFromScan(linkUrl('abc234'))).toBe('ABC234');
+  });
+});
+
+describe('a link code kept through sign-in', () => {
+  const now = Date.UTC(2026, 10, 5, 9);
+
+  it('comes back normalised while fresh', () => {
+    expect(decodePending(encodePending('abc-234', now), now + 60_000)).toBe('ABC234');
+  });
+
+  it('is forgotten after a day', () => {
+    expect(decodePending(encodePending('ABC234', now), now + PENDING_MAX_AGE_MS + 1)).toBeNull();
+  });
+
+  it('ignores missing, broken or invalid values', () => {
+    expect(decodePending(null, now)).toBeNull();
+    expect(decodePending('not json', now)).toBeNull();
+    expect(decodePending(JSON.stringify({ code: 'ABC230', savedAt: now }), now)).toBeNull();
+    expect(decodePending(JSON.stringify({ code: 'ABC234' }), now)).toBeNull();
+  });
+
+  it('is saved, read and cleared on the device', async () => {
+    await savePendingLinkCode('abc234');
+    expect(await readPendingLinkCode()).toBe('ABC234');
+    await clearPendingLinkCode();
+    expect(await readPendingLinkCode()).toBeNull();
+  });
+
+  it('is not saved when the code is incomplete', async () => {
+    await savePendingLinkCode('ABC2');
+    expect(await readPendingLinkCode()).toBeNull();
   });
 });
 
