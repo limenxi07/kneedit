@@ -74,5 +74,15 @@
     "addToCalendarHint": "在日历应用中打开这次复诊",
     "calendarTitle": "{{name}} 的复诊（Kneedit）",
     "calendarBody": "在 Kneedit 中预约。"
+  },
+  "demo": {
+    "title": "照护者演示",
+    "opening": "正在打开演示。您将看到家人照护者在 Kneedit 中看到的内容，使用的是示例数据。",
+    "signedInBody": "您已登录自己的账户。要打开演示，请先退出登录。您的账户不会有任何改变。",
+    "signOutAndOpen": "退出登录并打开演示",
+    "stay": "保持登录",
+    "qrTitle": "试用照护者演示",
+    "qrBody": "用手机相机扫描此二维码。您将看到家人照护者看到的内容，使用的是示例数据。无需账户，也无需安装应用。",
+    "qrLabel": "打开照护者演示的二维码"
   }
 }

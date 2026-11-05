@@ -425,6 +425,11 @@ verify_jwt = true
 [functions.generate-visit-summary]
 verify_jwt = true
 
+# Opened by the /demo link, before anyone is signed in. It only signs in to
+# accounts marked as demo. Turn it off with the secret DEMO_SIGN_IN=off.
+[functions.demo-sign-in]
+verify_jwt = false
+
 [analytics]
 enabled = true
 port = 54327

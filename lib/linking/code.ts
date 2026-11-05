@@ -17,8 +17,8 @@ export function isCompleteCode(input: string): boolean {
 }
 
 /**
- * The code in a scanned QR. Our QR holds just the code, but accept a URL
- * with a `code` parameter too, in case a later version encodes a link.
+ * The code in a scanned QR. Our QR holds a link (linkUrl) with a `code`
+ * parameter; QR codes shown by older versions hold just the code.
  */
 export function codeFromScan(data: string): string | null {
   const fromParam = /[?&]code=([^&#]+)/.exec(data)?.[1];

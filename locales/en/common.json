@@ -49,7 +49,8 @@
     "network": "Kneedit can't reach the internet. Check your connection and try again.",
     "generic": "Something went wrong. Please try again.",
     "nudgeRateLimited": "You already sent a nudge today. You can send another tomorrow.",
-    "demoOnly": "This only works on demo accounts."
+    "demoOnly": "This only works on demo accounts.",
+    "demoUnavailable": "The demo isn't available right now. Please try again later."
   },
   "sampleData": {
     "tag": "Sample data",
@@ -90,7 +91,8 @@
     "emailLabel": "Your email address",
     "sendCode": "Email me a sign-in code",
     "or": "or",
-    "google": "Continue with Google"
+    "google": "Continue with Google",
+    "linkPending": "You scanned a family member's Kneedit code. Sign in first, then you can ask to link to them."
   },
   "verify": {
     "title": "Check your email",

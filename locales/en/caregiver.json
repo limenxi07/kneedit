@@ -74,5 +74,15 @@
     "addToCalendarHint": "Opens the visit in your calendar app",
     "calendarTitle": "Physiotherapy visit: {{name}}",
     "calendarBody": "Booked in Kneedit."
+  },
+  "demo": {
+    "title": "Caregiver demo",
+    "opening": "Opening the demo. You will see what a family caregiver sees in Kneedit, with sample data.",
+    "signedInBody": "You are signed in to your own account. To open the demo, sign out first. Your account stays as it is.",
+    "signOutAndOpen": "Sign out and open the demo",
+    "stay": "Stay signed in",
+    "qrTitle": "Try the caregiver demo",
+    "qrBody": "Scan this with your phone camera. You will see what a family caregiver sees, with sample data. No account or app needed.",
+    "qrLabel": "QR code that opens the caregiver demo"
   }
 }

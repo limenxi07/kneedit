@@ -160,6 +160,56 @@ try {
   const signedOut = await invoke(anonymous, 'recompute-stats');
   assert.equal(signedOut.code, 401);
   console.log('recompute-stats: a signed-out caller is refused');
+
+  // demo-sign-in: a real account set up as a caregiver is never handed out.
+  const realCaregiver = await signedInUser('real-caregiver');
+  const { data: realUser } = await realCaregiver.auth.getUser();
+  r = await admin
+    .from('profiles')
+    .update({ default_context: 'caregiver' })
+    .eq('id', realUser.user!.id);
+  assert.equal(r.error, null);
+  const wrongRole = await invoke(anonymous, 'demo-sign-in', { role: 'physio' });
+  assert.equal(wrongRole.code, 400);
+
+  // A throwaway demo caregiver, made the way the seed script makes them.
+  const { data: demoUser, error: demoError } = await admin.auth.admin.createUser({
+    email: `check-demo-caregiver-${Date.now()}@kneedit.test`,
+    email_confirm: true,
+    app_metadata: { is_demo: true },
+  });
+  if (demoError) throw demoError;
+  created.push(demoUser.user.id);
+  r = await admin
+    .from('profiles')
+    .update({ default_context: 'caregiver' })
+    .eq('id', demoUser.user.id);
+  assert.equal(r.error, null);
+
+  const demo = await invoke<{ token_hash: string }>(anonymous, 'demo-sign-in', {
+    role: 'caregiver',
+  });
+  assert.equal(demo.error, null, `demo-sign-in failed: ${String(demo.error)}`);
+  const visitor = createClient<Database>(status.API_URL, status.ANON_KEY, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
+  const verified = await visitor.auth.verifyOtp({
+    token_hash: demo.data!.token_hash,
+    type: 'email',
+  });
+  assert.equal(verified.error, null);
+  // The seeded demo caregiver may be the one picked; either way it is a demo caregiver.
+  const signedInAs = verified.data.user!;
+  assert.equal(signedInAs.app_metadata.is_demo, true);
+  assert.notEqual(signedInAs.id, realUser.user!.id);
+  const demoProfile = await visitor
+    .from('profiles')
+    .select('is_demo, default_context')
+    .eq('id', signedInAs.id)
+    .single();
+  assert.equal(demoProfile.error, null);
+  assert.deepEqual(demoProfile.data, { is_demo: true, default_context: 'caregiver' });
+  console.log('demo-sign-in: a signed-out visitor gets a session for the demo caregiver only');
 } finally {
   for (const id of created) await admin.auth.admin.deleteUser(id);
 }
