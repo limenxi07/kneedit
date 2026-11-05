@@ -49,7 +49,8 @@
     "network": "Kneedit 无法连接网络。请检查网络后再试。",
     "generic": "出了点问题。请再试一次。",
     "nudgeRateLimited": "您今天已经送过提醒了。明天可以再送。",
-    "demoOnly": "这只能在演示账户中使用。"
+    "demoOnly": "这只能在演示账户中使用。",
+    "demoUnavailable": "演示暂时无法使用，请稍后再试。"
   },
   "sampleData": {
     "tag": "示例数据",

@@ -21,6 +21,12 @@ describe('errorKey', () => {
     expect(errorKey({ message: 'reauth_required', code: 'P0001' })).toBe('reauthRequired');
   });
 
+  it('maps what the demo-sign-in Edge Function returns', () => {
+    expect(errorKey(new Error('no_demo'))).toBe('demoUnavailable');
+    expect(errorKey(new Error('demo_off'))).toBe('demoUnavailable');
+    expect(en.errors).toHaveProperty('demoUnavailable');
+  });
+
   it('maps auth error codes', () => {
     expect(errorKey({ message: 'Token has expired or is invalid', code: 'otp_expired' })).toBe(
       'codeExpired',

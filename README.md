@@ -48,6 +48,14 @@ npm run db:stop
 
 To seed the hosted project instead, put `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` in `.env.seed.local` (gitignored). The script only ever deletes accounts marked as demo.
 
+### Caregiver demo link
+
+https://kneedit.vercel.app/demo signs a phone straight in to the demo caregiver (Tan Wei Jie) and opens Overview with Mei Ling's sample data. There's no account, setup or linking. To show it to people, open https://kneedit.vercel.app/demo/qr on a laptop, or print it, and let them scan it with their phone camera. On a Vercel preview, `/demo/qr` points at that preview.
+
+- It needs the demo seed on the hosted project (above) and the `demo-sign-in` Edge Function deployed (`npm run functions:deploy`).
+- Everyone who opens it shares the one demo caregiver, so notes and nudges they add are visible to the next visitor. `npm run seed:demo` resets them. Signing out of the demo only signs out that phone.
+- The function only ever signs in to an account marked as demo. Turn it off with `npx supabase secrets set DEMO_SIGN_IN=off`.
+
 ## Signing in
 
 Sign-in is by email: Kneedit emails a 6-digit code that also comes with a magic link. New accounts are created on first sign-in, then onboarding asks how the person will use Kneedit.

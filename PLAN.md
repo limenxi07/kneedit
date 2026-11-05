@@ -351,6 +351,7 @@ interface ExerciseTracker {
      - `LinkCodeCard` encodes the QR as `<site>/link-senior?code=<code>`, using the production URL in native builds and the current origin on web, so a preview deploy's QR opens that preview.
      - A signed-out visitor to `/link-senior?code=...` keeps the code through sign-in and onboarding, then lands back on the prefilled form (`lib/linking/pendingLinkCode.ts`, forgotten after a day). The welcome screen says why they are signing in.
      - A web manifest (name, icons, theme colour, `display: standalone`) for Add to Home Screen.
+     - **Caregiver demo link:** `/demo` signs the phone in to the seeded demo caregiver and opens Overview with sample data, with no account, setup or linking. `/demo/qr` shows its QR, for a laptop or print. The `demo-sign-in` Edge Function (`verify_jwt = false`) only hands out a one-time token for an account marked as demo, and `DEMO_SIGN_IN=off` turns it off. Signing out of a demo account is local, so one visitor never signs out the others.
      - Test: scan a QR of the Vercel preview URL on iPhone Safari and Android Chrome, sign in as the demo caregiver, link by QR, and walk every caregiver screen in both languages.
 8. **Polish:**
    - Accessibility pass: labels and roles, a large-text check at 200%, a screen-reader walkthrough.
@@ -406,5 +407,6 @@ Where a question wasn't answered, the recommendation stands.
 
 - **Expo SDK version.** We're on SDK 57, not the latest stable SDK 58, because the App Store's Expo Go only runs projects up to SDK 57 (decision 19). Upgrade to SDK 58 once Expo Go in the App Store supports it: `npx expo install expo@~58.0.0`, then `npx expo install --fix`, then `npx expo-doctor`. NativeWind 4 is confirmed working on both 57 and 58.
 - **Browser-only caregivers miss alerts.** A caregiver who only uses the website gets no push for a possible fall. Before a pilot, either add Web Push or ask caregivers who want alerts to install the app.
+- **The open demo link.** Anyone with `/demo` is signed in to the shared demo caregiver and can add notes or nudges the next visitor sees. Demo accounts can't link with real ones or delete themselves, and `npm run seed:demo` resets them. Turn it off with `DEMO_SIGN_IN=off` before a pilot if it isn't needed.
 - **App size.** Two weights of Noto Sans SC add roughly 15 to 20 MB to the native app. On web, the font loads from Google Fonts in subsets.
 - **Edge Function imports.** Edge Functions need to import `lib/progress` and `locales` from outside `supabase/functions`. If the Supabase bundler refuses, a sync script copies them into `_shared/`, with a test that fails if the copies drift.

@@ -22,5 +22,12 @@ export function siteUrl(): string {
  */
 export function linkUrl(code: string, site: string = siteUrl()): string {
   // Plain strings: React Native's URL has no working searchParams.
-  return `${site.replace(/\/+$/, '')}/link-senior?code=${encodeURIComponent(normalizeCode(code))}`;
+  return `${trim(site)}/link-senior?code=${encodeURIComponent(normalizeCode(code))}`;
 }
+
+/** The caregiver demo, which signs a phone in to the demo caregiver with sample data. */
+export function demoUrl(site: string = siteUrl()): string {
+  return `${trim(site)}/demo`;
+}
+
+const trim = (site: string) => site.replace(/\/+$/, '');

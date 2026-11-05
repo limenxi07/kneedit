@@ -15,6 +15,9 @@ const RPC_ERRORS = {
   reauth_required: 'reauthRequired',
   nudge_rate_limited: 'nudgeRateLimited',
   demo_only: 'demoOnly',
+  // From the demo-sign-in Edge Function.
+  no_demo: 'demoUnavailable',
+  demo_off: 'demoUnavailable',
 } as const;
 
 const AUTH_ERRORS = {

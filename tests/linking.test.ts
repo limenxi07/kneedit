@@ -3,7 +3,7 @@ import path from 'node:path';
 
 import { CONFIRMATION_WORD, matchesConfirmation } from '@/lib/account/deletion';
 import { codeFromScan, formatCode, isCompleteCode, normalizeCode } from '@/lib/linking/code';
-import { linkUrl, SITE_URL } from '@/lib/linking/linkUrl';
+import { demoUrl, linkUrl, SITE_URL } from '@/lib/linking/linkUrl';
 import {
   clearPendingLinkCode,
   decodePending,
@@ -56,6 +56,15 @@ describe('the link QR', () => {
 
   it('can be read back by the in-app scanner', () => {
     expect(codeFromScan(linkUrl('abc234'))).toBe('ABC234');
+  });
+});
+
+describe('the demo QR', () => {
+  it('opens /demo on the given site, or the production site off the web', () => {
+    expect(demoUrl('https://kneedit-git-pr-7.vercel.app/')).toBe(
+      'https://kneedit-git-pr-7.vercel.app/demo',
+    );
+    expect(demoUrl()).toBe(`${SITE_URL}/demo`);
   });
 });
 
