@@ -92,6 +92,11 @@ assets/fonts/, assets/exercise-media/
 
 **Web.** `web.output: "single"`. Vercel runs `npx expo export -p web` and serves `dist/`, with an SPA rewrite. Physio routes use a desktop layout from 1024px up. Senior and caregiver routes stay phone-width, centred on the page.
 
+- **Caregivers (and seniors) can use the site in a phone browser.** The web build serves every route, so a caregiver opens https://kneedit.vercel.app on their phone with no install and no Expo Go. RLS enforces sharing the same way on every platform.
+- **Already in place (Phases 3 to 6):** the Supabase redirect allowlist covers production and the `*.vercel.app` previews; sign-in goes to the 6-digit code screen, so a magic link opened in a mail app's own browser doesn't matter; the web build has no in-page scanner (`CAN_SCAN` is false) and offers typing the code; `/link-senior?code=<code>` prefills the code, and `codeFromScan` already reads `?code=` from a scanned URL.
+- **What a phone browser can't do in the MVP: push.** Expo push tokens don't exist on web, so a browser-only caregiver gets no push for possible falls, nudges or weekly reports. They see them in the Alerts list and on Overview instead, and the app never tells a browser-only user they will be notified. Web Push (a service worker and VAPID keys, which on iPhone works only after Add to Home Screen, iOS 16.4 and later) is out of scope for the MVP.
+- **Link QR as a URL** (Phase 7): the QR encodes `https://kneedit.vercel.app/link-senior?code=<code>` instead of the bare code, so any phone camera opens the site at the right screen. The in-app scanner keeps working, because `codeFromScan` reads the `code` parameter.
+
 ## Progress rules (`lib/progress`)
 
 - **Day:** an Asia/Singapore calendar date. **Week:** Monday to Sunday.
@@ -268,7 +273,7 @@ interface ExerciseTracker {
 
 **Caregiver:**
 
-- link a senior by code or QR scan, then a pending screen
+- link a senior by code or QR scan (on web, the phone's own camera opens the link URL), then a pending screen
 - senior picker
 - Overview:
   - Free: streak and sessions this month
@@ -337,11 +342,16 @@ interface ExerciseTracker {
 5. **Caregiver app:** free stats, the live weekly report, flagged events, notes, the alerts list, simulate fall, nudges (stored and shown on the senior's Today screen), the Plus info / mock checkout sheet, calendar with .ics. Every Plus feature is unlocked and badged.
 6. **Physio web:** desktop shell, patient list, patient page, visit summaries (`generate-visit-summary` Edge Function), visits, prescribing, scheduling with .ics, agenda, clinical details, library.
 7. **Notifications and jobs:**
-   - Push token registration, plus a shared `send-push` sender using the Expo push service and the recipient's locale.
+   - Push token registration, plus a shared `send-push` sender using the Expo push service and the recipient's locale. Push goes to native installs only: web sessions register no token, and the sender skips users without one.
    - Push on nudges.
    - An immediate fall push through a database webhook on `fall_events`, Plus only and only if the senior allows it, worded as "possible fall detected" with no promises.
    - Daily job (00:15 SGT, pg_cron): recompute every `senior_stats` row, mark abandoned sessions incomplete, and send the 3-missed-days alert once for each run of missed days.
    - Monday job: archive `leaderboard_weeks`, then generate `weekly_reports` and send "weekly report ready" to Plus caregivers who have the report on.
+   - **Caregivers on the web** (see Web in Architecture):
+     - `LinkCodeCard` encodes the QR as `<site>/link-senior?code=<code>`, using the production URL in native builds and the current origin on web, so a preview deploy's QR opens that preview.
+     - A signed-out visitor to `/link-senior?code=...` keeps the code through sign-in and onboarding, then lands back on the prefilled form. Today `RequireSignedIn` sends them to `/welcome` and the code is lost.
+     - A web manifest (name, icons, theme colour, `display: standalone`) for Add to Home Screen.
+     - Test: scan a QR of the Vercel preview URL on iPhone Safari and Android Chrome, sign in as the demo caregiver, link by QR, and walk every caregiver screen in both languages.
 8. **Polish:**
    - Accessibility pass: labels and roles, a large-text check at 200%, a screen-reader walkthrough.
    - Copy check in both languages, an empty state everywhere.
@@ -395,5 +405,6 @@ Where a question wasn't answered, the recommendation stands.
 ## Risks I'll watch
 
 - **Expo SDK version.** We're on SDK 57, not the latest stable SDK 58, because the App Store's Expo Go only runs projects up to SDK 57 (decision 19). Upgrade to SDK 58 once Expo Go in the App Store supports it: `npx expo install expo@~58.0.0`, then `npx expo install --fix`, then `npx expo-doctor`. NativeWind 4 is confirmed working on both 57 and 58.
+- **Browser-only caregivers miss alerts.** A caregiver who only uses the website gets no push for a possible fall. Before a pilot, either add Web Push or ask caregivers who want alerts to install the app.
 - **App size.** Two weights of Noto Sans SC add roughly 15 to 20 MB to the native app. On web, the font loads from Google Fonts in subsets.
 - **Edge Function imports.** Edge Functions need to import `lib/progress` and `locales` from outside `supabase/functions`. If the Supabase bundler refuses, a sync script copies them into `_shared/`, with a test that fails if the copies drift.
